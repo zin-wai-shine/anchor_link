@@ -1,0 +1,5 @@
+require('./bootstrap');
+
+    $('myselect').niceSelect();
+
+
