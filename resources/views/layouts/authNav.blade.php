@@ -55,10 +55,12 @@
 
                         <span class="text-light fw-bold mx-2">{{ Auth::user()->name }}</span>
 
-                   {{-- MANAGE DROPDOWN --}}
+                {{-- MANAGE DROPDOWN --}}
 
-                        {{--CREATE ITEMS DROPDOWN--}}
-                            @include('layouts.drop.create')
+{{--                        --}}{{--CREATE ITEMS DROPDOWN--}}{{--
+                            @include('layouts.drop.createItem')
+                        --}}{{--CREATE CATEGORY DROPDOWN--}}{{--
+                            @include('layouts.drop.createCategory')--}}
 
                         <div class="mx-3">
                             <i class="fa fa-gear text-light manage__logo" id="manageLogo"></i>
@@ -69,18 +71,29 @@
                         >
                             <i class="fa fa-close text-light manage__close" id="manageClose"></i>
 
-                           {{-- CREATE ITEMS --}}
-                            <div class="manage__item mt-4 text-decoration-none w-100
+{{--                 CREATE CATEGORY
+                            <a href="" class="manage__item mt-4 text-decoration-none w-100
+                                    bg-light text-primary py-1 px-3 d-flex justify-content-between
+                                    align-items-center"
+                                 id="clickCreateCategory"
+                            >
+                                <span>Create Category</span>
+                                <i class="fa fa-plus-circle"></i>
+                            </a>
+                            ABOVE OF CREATE CATEGORY DROPDOWN--}}
+
+               {{-- CREATE ITEMS --}}
+                            <a href="{{ route("manage") }}" class="manage__item mt-4 text-decoration-none w-100
                                     bg-light text-primary py-1 px-3 d-flex justify-content-between
                                     align-items-center"
                                  id="clickCreateItem"
                             >
-                                <span>create items</span>
+                                <span>Manage</span>
                                 <i class="fa fa-plus-circle"></i>
-                            </div>
+                            </a>
                             {{--ABOVE OF CREATE ITEMS DROPDOWN--}}
 
-                            {{--LOGOUT--}}
+                {{--LOGOUT--}}
                             <a class="manage__item mt-4 text-decoration-none w-100 bg-danger text-light py-1 px-3 d-flex justify-content-between align-items-center" href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
