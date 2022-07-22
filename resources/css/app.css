@@ -1,0 +1,165 @@
+
+body{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.home__container {
+    background-image: url("../../public/images/universe.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+}
+
+.main__container{
+    height: 100vh;
+}
+
+.nav__container{
+    height: 5% !important;
+    z-index: 2003 !important;
+}
+
+.content__container{
+    height: 95% !important;
+    position: relative;
+}
+
+.dropLink__container{
+    width: 1000px;
+}
+
+.setting{
+    width: 30px !important;
+}
+
+.nav__link{
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+.nav__link:hover{
+    color: #62E3FF !important;
+}
+
+.display__action{
+    display: none;
+}
+
+.web__item{
+    min-width: 1300px;
+    min-height: 700px;
+    position: absolute;
+    top: 5%;
+    right:15%;
+    z-index: 1001;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-image: url("../../public/images/universe.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+
+}
+
+.youtube__item{
+    min-width: 1300px;
+    min-height: 700px;
+    position: absolute;
+    top: 5%;
+    left:15%;
+    z-index: 1001;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background-image: url("../../public/images/galaxy.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+}
+
+.itemClose{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.itemClose:hover{
+    color: #62E3FF!important;
+    transform: scale(1.2);
+}
+
+.manage__dropdown{
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 5%;
+    right:1px;
+    z-index: 2004;
+    border-bottom-left-radius: 5px;
+}
+
+.manage__logo{
+    border-radius: 50%;
+    padding: 7px;
+    cursor:pointer;
+    transition: all 200ms ease-in-out;
+    animation: rotation 2s infinite linear;
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+.manage__logo:hover{
+    background-color: #B4D9E4;
+    color: #26223B !important;
+}
+
+.manage__item{
+    height: 30px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 200ms ease-in-out;
+}
+.manage__item:hover{
+    background-color:#62E3FF !important;
+}
+
+.manage__close{
+    border-radius: 50%;
+    transition: all 200ms ease-in-out;
+    font-size: 14px;
+    cursor: pointer;
+    position: absolute;
+    top: 7px;
+    left: 7px;
+}
+.manage__close:hover{
+    transform: scale(1.2);
+}
+
+.create__items{
+    border-radius: 5px;
+    width: 70%;
+    height: 80%;
+    position: fixed;
+    top:10%;
+    right:0;
+    left: 0;
+    margin: 0 auto;
+    z-index: 2005;
+}
+
+.item__child{
+    width: 100px;
+    height: 20px;
+}
+
+

@@ -1,8 +1,8 @@
 // Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
+@import url('https://fonts.googleapis.com/css2?family=Changa:wght@200&display=swap');
 // Variables
 @import 'variables';
+@import '~animate.css';
 @import "~jquery-nice-select/scss/nice-select";
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -11,23 +11,7 @@ $light:#B4D9E4;
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
-body{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-.main__container{
-    height: 100vh;
-}
 
-.nav__container{
-    height: 5% !important;
-}
 
-.content__container{
-    height: 95% !important;
-}
 
-.dropLink__container{
-    width: 1000px;
-}
+

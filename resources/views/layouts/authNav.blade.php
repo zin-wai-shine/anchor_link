@@ -1,27 +1,42 @@
 <div class="nav__container bg-primary">
 
-        <div class="d-flex justify-content-between align-items-center w-100 h-100 px-5 ">
+        <div class="d-flex justify-content-between align-items-center w-100 h-100">
 
             <div class="page__logo">
-                <a href="" class="text-decoration-none fw-bold text-light">AL</a>
+                <a href="{{ route('home') }}" class="text-decoration-none fw-bold text-light mx-3">AL</a>
             </div>
 
             <div class="dropLink__container d-flex align-items-center justify-content-between">
                 <div class="home__page">
-                    <a href="" class="text-decoration-none text-light fw-bold">Go To Home</a>
+                    <a href="{{ route('home') }}" class="text-decoration-none text-light fw-bold nav__link">
+                        Go To Home
+                        <i class="fa fa-house mx-3"></i>
+                    </a>
                 </div>
 
-                <div class="select__category">
-                    <a href="" class="text-decoration-none text-light fw-bold">Travel To Webpage World</a>
+            {{--WEB PAGE ACTION--}}
+                <div class="select__category web__drop">
+                    <div class="text-decoration-none text-light fw-bold nav__link " id="clickWeb">
+                        Travel To Webpage World
+                        <i class="fa fa-angle-down mx-3"></i>
+                    </div>
+                   @include('layouts.drop.web')
                 </div>
 
-                <div class="select__category">
-                    <a href="" class="text-decoration-none text-light fw-bold">Travel To Youtube World</a>
+            {{--YOUTUBE PAGE ACTION--}}
+                <div class="select__category youtube__drop">
+                    <div class="text-decoration-none text-light fw-bold nav__link " id="clickYoutube">
+                        Travel To Youtube World
+                        <i class="fa fa-angle-down mx-3"></i>
+                    </div>
+                    @include('layouts.drop.youtube')
                 </div>
             </div>
 
+        {{--LOGIN AND REGISTER BUTTON--}}
             <div class="user__container d-flex">
                 @guest
+
                     @if (Route::has('login'))
                         <li class="">
                             <a class="text-light text-decoration-none fw-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -33,17 +48,57 @@
                             <a class="text-light text-decoration-none fw-bold" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                     @endif
+
                 @else
-                    <div class="">
-                        <span class="text-light fw-bold">{{ Auth::user()->name }}</span>
-                        <select id="myselect" class="nice-select right open">
-                            <option data-display="Select">Nothing</option>
-                            <option value="1">Some option</option>
-                            <option value="2">Another option</option>
-                            <option value="3" disabled>A disabled option</option>
-                            <option value="4">Potato</option>
-                        </select>
+
+                    <div class="d-flex align-items-center">
+
+                        <span class="text-light fw-bold mx-2">{{ Auth::user()->name }}</span>
+
+                   {{-- MANAGE DROPDOWN --}}
+
+                        {{--CREATE ITEMS DROPDOWN--}}
+                            @include('layouts.drop.create')
+
+                        <div class="mx-3">
+                            <i class="fa fa-gear text-light manage__logo" id="manageLogo"></i>
+                        </div>
+
+                        <div class="manage__dropdown p-2 bg-primary animate__animated animate__fadeIn animate__faster display__action"
+                            id="manageDropdown"
+                        >
+                            <i class="fa fa-close text-light manage__close" id="manageClose"></i>
+
+                           {{-- CREATE ITEMS --}}
+                            <div class="manage__item mt-4 text-decoration-none w-100
+                                    bg-light text-primary py-1 px-3 d-flex justify-content-between
+                                    align-items-center"
+                                 id="clickCreateItem"
+                            >
+                                <span>create items</span>
+                                <i class="fa fa-plus-circle"></i>
+                            </div>
+                            {{--ABOVE OF CREATE ITEMS DROPDOWN--}}
+
+                            {{--LOGOUT--}}
+                            <a class="manage__item mt-4 text-decoration-none w-100 bg-danger text-light py-1 px-3 d-flex justify-content-between align-items-center" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                <span class="">logout</span>
+                                <i class="fa fa-arrow-right-from-bracket"></i>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+
+                        </div>
+
+
+
+
+
                     </div>
+
                 @endguest
             </div>
 
