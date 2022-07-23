@@ -5970,8 +5970,8 @@ progress {
   --bs-table-striped-bg: rgba(0, 0, 0, 0.05);
   --bs-table-active-color: var(--bs-body-color);
   --bs-table-active-bg: rgba(0, 0, 0, 0.1);
-  --bs-table-hover-color: var(--bs-body-color);
-  --bs-table-hover-bg: rgba(0, 0, 0, 0.075);
+  --bs-table-hover-color: #B4D9E4;
+  --bs-table-hover-bg: rgba(72, 194, 231, 0.2941176471);
   width: 100%;
   margin-bottom: 1rem;
   color: var(--bs-table-color);
@@ -15355,6 +15355,36 @@ body{
 .each__itemContainer div:hover{
     color: #26223B !important;
 }
+
+/* MANAGE CURRENT STATUS */
+.current__page{
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+}
+.current__status{
+    width: 100%;
+    height:250px;
+    border-radius: 5px;
+}
+.create__status{
+    width: 100%;
+    height: 590px;
+    border-radius: 5px;
+}
+.list__status{
+    width: 100%;
+    height: 850px;
+    border-radius: 5px;
+}
+.current__category{
+    width: 100px;
+    height: 25px;
+    border-radius: 5px;
+    font-size: 15px;
+    margin-right: 5px;
+}
+
 
 
 

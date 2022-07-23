@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -15,7 +17,11 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index');
+        $categories = Category::when(request('keyword'),function($q){
+            $keyword = request('keyword');
+            $q->orWhere("title", "like", "%$keyword%");
+        })->latest('id')->with('user')->paginate('9')->withQueryString();
+        return view('category.index',compact('categories'));
     }
 
     /**
@@ -36,7 +42,13 @@ class CategoryController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $category = new Category();
+        $category->title = ucfirst($request->title);
+        $category->icon = $request->icon;
+        $category->user_id = Auth::id();
+        $category->save();
+
+        return redirect()->back()->with('status','category is created.');
     }
 
     /**
@@ -58,7 +70,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('category.edit',compact('category'));
     }
 
     /**
@@ -70,7 +82,11 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $category->title = $request->title;
+        $category->icon  = $request->icon;
+        $category->update();
+
+        return redirect()->route('category.index')->with('status','category is updated.');
     }
 
     /**
@@ -81,6 +97,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        return redirect()->back()->with('status','category is deleted.');
     }
 }

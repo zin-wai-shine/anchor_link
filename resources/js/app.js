@@ -1,4 +1,5 @@
 require('./bootstrap');
+require('../anchor/public/index.html');
 
 
     const clickWeb = document.getElementById('clickWeb');
