@@ -5,7 +5,7 @@
     <div class="py-2 d-flex flex-column justify-content-center align-items-center h-100">
 
         {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h5 mb-0">
+        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-0">
             <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
             <div class="mx-3 text-light">/</div>
             <a href="{{ route('category.index') }}" class="text-light text-decoration-none">Category <i class="fa fa-list-squares"></i></a>
@@ -21,7 +21,10 @@
         </div>
 
         {{-- CREATE STATUS --}}
-        <div class="create__status bg-primary">
+        <div class="create__status bg-primary position-relative">
+            <a href="{{ route('category.index') }}" class="back__page d-flex justify-content-center align-items-center fw-bold text-decoration-none">
+                <i class="fa fa-angles-left text-light"></i><i class="fa fa-angles-left text-light"></i>
+            </a>
             <div class="row p-4 h-100">
                 <div class="col-6 h-100 d-flex flex-column justify-content-center px-5">
                     <form action="{{ route('category.store') }}" method="post">
@@ -32,12 +35,12 @@
                                     type="text"
                                     name="title"
                                     value="{{ old('title',$category->title) }}"
-                                    class="form-control form-control-lg bg-light @error('title') is-invalid @enderror"
+                                    class="form-control form-control-lg bg-primary border-light text-light @error('title') is-invalid @enderror"
                                     placeholder="text category . . . ."
                                 >
                             </div>
                             @error('title')
-                            <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                <div class="text-danger h5 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
 
@@ -47,7 +50,7 @@
                                     type="text"
                                     name="icon"
                                     value="{{ old('icon',$category->icon) }}"
-                                    class="form-control form-control-lg bg-light @error('icon') is-invalid @enderror"
+                                    class="form-control form-control-lg bg-primary border-light text-light @error('icon') is-invalid @enderror"
                                     placeholder="text icon . . . . "
                                 >
                             </div>
@@ -55,7 +58,7 @@
                             <div class="text-danger h5 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button class="btn btn-light btn-lg w-25 mt-5"><i class="fa fa-plus text-primary fw-bold"></i></button>
+                        <button class="btn btn-outline-light btn-lg w-25 mt-5"><i class="fa fa-plus text-light fw-bold"></i></button>
                     </form>
                 </div>
 

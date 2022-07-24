@@ -241,8 +241,20 @@ body{
     border-radius: 5px;
     font-size: 15px;
     margin-right: 5px;
+    border: 1px solid #a2c3cd;
+}
+.back__page{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    top:5px;
+    left: 5px;
+    transition: all 200ms ease-in;
 }
 
-
-
+.back__page:hover{
+    background-color: #48c2e74b;
+    color: #26223B !important;
+}
 

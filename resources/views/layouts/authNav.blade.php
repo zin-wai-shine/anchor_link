@@ -17,7 +17,7 @@
             {{--WEB PAGE ACTION--}}
                 <div class="select__category web__drop">
                     <div class="text-decoration-none text-light fw-bold nav__link " id="clickWeb">
-                        Travel To Webpage World
+                        Travel To Webpage  <i class="fa fa-link"></i>
                         <i class="fa fa-angle-down mx-3"></i>
                     </div>
                    @include('layouts.drop.web')
@@ -26,7 +26,7 @@
             {{--YOUTUBE PAGE ACTION--}}
                 <div class="select__category youtube__drop">
                     <div class="text-decoration-none text-light fw-bold nav__link " id="clickYoutube">
-                        Travel To Youtube World
+                        Travel To Youtube  <i class="fa fa-link"></i>
                         <i class="fa fa-angle-down mx-3"></i>
                     </div>
                     @include('layouts.drop.youtube')

@@ -36,7 +36,7 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
-        //
+
     }
 
     /**

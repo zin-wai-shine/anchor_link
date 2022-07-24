@@ -5,7 +5,7 @@
     <div class="py-2 d-flex flex-column justify-content-center align-items-center h-100">
 
        {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h5 mb-0">
+        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-0">
             <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
             <div class="mx-3 text-light">/</div>
             <a href="{{ route('category.index') }}" class="text-light text-decoration-none">Category <i class="fa fa-list-squares"></i></a>
@@ -16,7 +16,7 @@
        {{-- CURRENT STATUS --}}
         <div class="current__status bg-primary my-2 d-flex p-4 flex-wrap overflow-auto">
             @foreach(\App\Models\Category::all() as $category)
-                <div class="current__category bg-light text-primary text-center mb-2">{{ $category->title }}</div>
+                <div class="current__category bg-primary text-light text-center mb-2">{{ $category->title }}</div>
             @endforeach
         </div>
 
