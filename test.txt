@@ -1,43 +1,39 @@
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+/*    const clickCreateItem = document.getElementById('clickCreateItem')
+    const createItem = document.getElementById('createItem');
+    const createItemClose = document.getElementById('createItemClose');
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav me-auto">
-            </ul>
-            <!-- Right Side Of Navbar -->
-            <ul class="navbar-nav ms-auto">
-                <!-- Authentication Links -->
-                @guest
-                    @if (Route::has('login'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li>
-                    @endif
+    const clickCreateCategory = document.getElementById('clickCreateCategory')
+    const createCategory = document.getElementById('createCategory');
+    const createCategoryClose = document.getElementById('createCategoryClose');*/
 
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                        </li>
-                    @endif
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle text-light fw-bold" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }}
-                        </a>
 
-                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                {{ __('Logout') }}
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </div>
-                    </li>
-                @endguest
-            </ul>
-        </div>
+
+/*/!* CREATE ITEM DROP DOWN *!/
+    function toggleCreateItem (){
+        if(createItem.classList.contains('display__action')){
+            webItem.classList.add('display__action');
+            youtubeItem.classList.add('display__action');
+            manageDropdown.classList.add('display__action');
+            createCategory.classList.add('display__action');
+            createItem.classList.remove('display__action');
+        }else{
+            createItem.classList.add('display__action')
+        }
+    }
+    clickCreateItem.addEventListener('click',()=>{toggleCreateItem();})
+    createItemClose.addEventListener("click", ()=>{toggleCreateItem();})
+
+/!* CREATE CATEGORY DROP DOWN *!/
+    function toggleCreateCategory (){
+        if(createCategory.classList.contains('display__action')){
+            webItem.classList.add('display__action');
+            youtubeItem.classList.add('display__action');
+            manageDropdown.classList.add('display__action');
+            createItem.classList.add('display__action');
+            createCategory.classList.remove('display__action');
+        }else{
+            createCategory.classList.add('display__action')
+        }
+    }
+    clickCreateCategory.addEventListener('click',()=>{toggleCreateCategory();})
+    createCategoryClose.addEventListener("click", ()=>{toggleCreateCategory();})*/

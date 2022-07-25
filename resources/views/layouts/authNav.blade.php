@@ -34,7 +34,7 @@
             </div>
 
         {{--LOGIN AND REGISTER BUTTON--}}
-            <div class="user__container d-flex">
+            <div class="user__container d-flex align-items-center">
                 @guest
 
                     @if (Route::has('login'))
@@ -54,6 +54,21 @@
                     <div class="d-flex align-items-center">
 
                         <span class="text-light fw-bold mx-2">{{ Auth::user()->name }}</span>
+                        <div
+                            id="profileClick"
+                            class="profile__logo profile__status"
+                            style="background-image:url(
+                            {{ \Illuminate\Support\Facades\Auth::user()->logo == "profile.png"
+                                ? asset('images/'.\Illuminate\Support\Facades\Auth::user()->logo)
+                                : asset('storage/profiles/'.\Illuminate\Support\Facades\Auth::user()->logo)
+                                }})"
+                        >
+                        </div>
+
+
+              {{--  MANAGE PROFILE --}}
+                       @include('layouts.drop.profile')
+
 
                 {{-- MANAGE DROPDOWN --}}
 

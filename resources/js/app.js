@@ -1,6 +1,4 @@
 require('./bootstrap');
-require('../anchor/public/index.html');
-
 
     const clickWeb = document.getElementById('clickWeb');
     const webItem = document.getElementById('webItem');
@@ -14,23 +12,28 @@ require('../anchor/public/index.html');
     const manageDropdown = document.getElementById('manageDropdown');
     const manageClose = document.getElementById('manageClose');
 
-/*    const clickCreateItem = document.getElementById('clickCreateItem')
-    const createItem = document.getElementById('createItem');
-    const createItemClose = document.getElementById('createItemClose');
+    const profileClick = document.getElementById('profileClick');
+    const profileStatus = document.getElementById('profileStatus');
+    const profileClose = document.getElementById('profileClose');
 
-    const clickCreateCategory = document.getElementById('clickCreateCategory')
-    const createCategory = document.getElementById('createCategory');
-    const createCategoryClose = document.getElementById('createCategoryClose');*/
+    const profileEdit = document.getElementById('profileEdit');
+    const profile = document.getElementById('profile');
 
+    const currentName = document.getElementById('currentName');
+    const editName = document.getElementById('editName');
+    const updateName = document.getElementById('updateName');
+    const editNameClose = document.getElementById('editNameClose');
 
 /* WEB DROP */
     function webFun(){
         if(webItem.classList.contains('display__action')){
             manageDropdown.classList.add('display__action')
             youtubeItem.classList.add('display__action');
+            profileStatus.classList.add('display__action');
 /*            createItem.classList.add('display__action');
             createCategory.classList.add('display__action');*/
             webItem.classList.remove('display__action');
+
         }else{
             webItem.classList.add('display__action');
         }
@@ -45,6 +48,7 @@ require('../anchor/public/index.html');
         if(youtubeItem.classList.contains('display__action')){
             webItem.classList.add('display__action');
             manageDropdown.classList.add('display__action')
+            profileStatus.classList.add('display__action');
  /*           createItem.classList.add('display__action')
             createCategory.classList.add('display__action');*/
             youtubeItem.classList.remove('display__action');
@@ -62,6 +66,7 @@ require('../anchor/public/index.html');
         if(manageDropdown.classList.contains('display__action')){
             youtubeItem.classList.add('display__action');
             webItem.classList.add('display__action');
+            profileStatus.classList.add('display__action');
             manageDropdown.classList.remove('display__action')
         }else{
             manageDropdown.classList.add('display__action')
@@ -70,32 +75,41 @@ require('../anchor/public/index.html');
     manageLogo.addEventListener('click',()=>{manageFun();});
     manageClose.addEventListener('click',()=>{manageFun();});
 
-/*/!* CREATE ITEM DROP DOWN *!/
-    function toggleCreateItem (){
-        if(createItem.classList.contains('display__action')){
-            webItem.classList.add('display__action');
-            youtubeItem.classList.add('display__action');
-            manageDropdown.classList.add('display__action');
-            createCategory.classList.add('display__action');
-            createItem.classList.remove('display__action');
-        }else{
-            createItem.classList.add('display__action')
-        }
-    }
-    clickCreateItem.addEventListener('click',()=>{toggleCreateItem();})
-    createItemClose.addEventListener("click", ()=>{toggleCreateItem();})
 
-/!* CREATE CATEGORY DROP DOWN *!/
-    function toggleCreateCategory (){
-        if(createCategory.classList.contains('display__action')){
+/* PROFILE MANAGEMENT */
+    function profileFun(){
+        if(profileStatus.classList.contains('display__action')){
             webItem.classList.add('display__action');
-            youtubeItem.classList.add('display__action');
             manageDropdown.classList.add('display__action');
-            createItem.classList.add('display__action');
-            createCategory.classList.remove('display__action');
+            youtubeItem.classList.add('display__action');
+            currentName.classList.remove('display__action');
+            updateName.classList.add('display__action');
+            profileStatus.classList.remove('display__action');
         }else{
-            createCategory.classList.add('display__action')
+            profileStatus.classList.add('display__action');
         }
     }
-    clickCreateCategory.addEventListener('click',()=>{toggleCreateCategory();})
-    createCategoryClose.addEventListener("click", ()=>{toggleCreateCategory();})*/
+    profileClick.addEventListener('click',()=>{profileFun();});
+    profileClose.addEventListener('click',()=>{profileFun();});
+
+/* EDIT PROFILE */
+    profileEdit.addEventListener("click",()=>{
+       profile.click();
+    });
+/*
+    profile.onchange = e => {
+        alert(e.target.files[0].name);
+    }*/
+
+    function editNameStatus (){
+        if( currentName.classList.contains('display__action')){
+            currentName.classList.remove('display__action');
+            updateName.classList.add('display__action');
+        }else{
+            currentName.classList.add('display__action');
+            updateName.classList.remove('display__action');
+        }
+    }
+    editName.addEventListener('click',() => { editNameStatus() });
+    editNameClose.addEventListener('click',()=>{ editNameStatus() });
+

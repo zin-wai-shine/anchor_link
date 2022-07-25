@@ -26,7 +26,7 @@ class StoreItemRequest extends FormRequest
         return [
             'title' => 'required|min:10',
             'category' => 'required',
-            'photo' => 'required',
+            'photo' => 'required|mimes:jpg,png,jpeg,svg|file'
         ];
     }
 }

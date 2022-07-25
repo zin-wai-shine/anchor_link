@@ -15,7 +15,11 @@ class ItemController extends Controller
      */
     public function index()
     {
-        return view('item.index');
+        $items = Item::when(request('keyword'),function($q){
+            $keyword = request('keyword');
+            $q->orWhere("title","like","%$keyword%");
+        })->with('category')->latest('id')->paginate('7')->withQueryString();
+        return view('item.index',compact('items'));
     }
 
     /**
@@ -36,7 +40,15 @@ class ItemController extends Controller
      */
     public function store(StoreItemRequest $request)
     {
+        $item = new Item();
+        $item->title = $request->title;
+        $item->category_id = $request->category;
+        $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
+        $request->file('photo')->storeAs('public/images',$fileNewName);
+        $item->photo = $fileNewName;
+        $item->save();
 
+        return redirect()->back()->with('status','anchor item is created.');
     }
 
     /**
@@ -47,7 +59,7 @@ class ItemController extends Controller
      */
     public function show(Item $item)
     {
-        //
+        return view('item.show',compact('item'));
     }
 
     /**
@@ -58,7 +70,7 @@ class ItemController extends Controller
      */
     public function edit(Item $item)
     {
-        //
+        return view('item.edit',compact('item'));
     }
 
     /**
@@ -70,7 +82,14 @@ class ItemController extends Controller
      */
     public function update(UpdateItemRequest $request, Item $item)
     {
-        //
+        $item->title = $request->title;
+        $item->category_id = $request->category;
+        $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
+        $request->file('photo')->storeAs('public/images',$fileNewName);
+        $item->photo = $fileNewName;
+        $item->update();
+
+        return redirect()->route("item.index")->with('status','anchor item is created.');
     }
 
     /**
@@ -81,6 +100,8 @@ class ItemController extends Controller
      */
     public function destroy(Item $item)
     {
-        //
+        $item->delete();
+
+        return redirect()->back()->with('status','deleted item is completely.');
     }
 }

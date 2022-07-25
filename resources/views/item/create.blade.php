@@ -23,7 +23,7 @@
 
            {{-- CREATER SIDE --}}
                 <div class="col-6 d-flex flex-column justify-content-center h-100 ">
-                        <form action="{{ route('item.store') }}" method="post">
+                        <form action="{{ route('item.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
 
                             <div class="w-75">
@@ -68,13 +68,11 @@
                                     <input
                                         type="file"
                                         name="photo"
-                                        value="{{ old('photo') }}"
                                         class="form-control form-control-lg bg-primary text-light border-light"
-                                        placeholder="text category . . . ."
                                     >
                                 </div>
                                 @error('photo')
-                                <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                    <div class="text-danger h5 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
 

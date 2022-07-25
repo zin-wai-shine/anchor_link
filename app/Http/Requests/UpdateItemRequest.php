@@ -13,7 +13,7 @@ class UpdateItemRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class UpdateItemRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => 'required|min:10',
+            'category' => 'required',
+            'photo' => 'required|mimes:jpg,png,jpeg,svg|file'
         ];
     }
 }

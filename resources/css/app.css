@@ -5,6 +5,95 @@ body{
     box-sizing: border-box;
 }
 
+.register__page{
+    background-image: url("../../public/images/galaxy.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+}
+.register__container{
+    width: 500px;
+    height: 300px;
+}
+
+.profile__status{
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    border: 2px solid #B4D9E4;
+}
+.edit__profile__logoContainer{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    font-size: 20px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    z-index: 2009;
+    transition: all 200ms ease-in;
+}
+.edit__profile__logoCase{
+    position: absolute;
+    top: -5px;
+    right: 0;
+    z-index: 1010;
+}
+.profile__first__case{
+    width: 250px;
+    height: 250px;
+}
+.profile__second__case{
+    height: 60px;
+    min-width: 300px;
+}
+.profile__third__case{
+    height: 60px;
+    min-width: 300px;
+}
+
+.save__editProfile{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.edit__profile__logo{
+    position: absolute;
+    top:-20px;
+    right: -20px;
+    transition: all 200ms ease-in;
+}
+.edit__profile__logo:hover{
+    cursor:pointer;
+    color: rgba(0, 175, 0, 0.815)!important;
+}
+
+.profile__logo{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+.show__profile_logo{
+    width: 200px;
+    height: 200px;
+    border: 5px solid #B4D9E4;  /*dashed mean ---------- */
+}
+
+.edit__profile__container{
+    width: 600px;
+    height: 700px;
+    position: absolute;
+    border-radius: 5px;
+    top: 15%;
+    right:0;
+    left:0;
+    margin: 0 auto;
+    z-index: 1008;
+}
+
 .home__container {
     background-image: url("../../public/images/universe.jpg");
     background-size: cover;
@@ -84,12 +173,20 @@ body{
     font-size: 20px;
     cursor: pointer;
 }
-
 .itemClose:hover{
-    color: #62E3FF!important;
-    transform: scale(1.2);
+    color: red!important;
+    transform: scale(1.3);
 }
 
+
+.closeStatus{
+    transition: all 100ms ease-in;
+}
+
+.closeStatus:hover{
+    color: red!important;
+    transform: scale(1.5);
+}
 .manage__dropdown{
     width: 200px;
     height: auto;
@@ -130,6 +227,12 @@ body{
 }
 .manage__item:hover{
     background-color:#62E3FF !important;
+    color: #000000 !important;
+}
+
+.item__logo__img{
+    object-fit: contain;
+    height: 50px;
 }
 
 .manage__close{
@@ -143,6 +246,7 @@ body{
 }
 .manage__close:hover{
     transform: scale(1.2);
+    color: red !important;
 }
 
 .create__items{
@@ -188,6 +292,10 @@ body{
 /* MANAGE STYLE */
 .manage__container{
     height: 100%;
+    background-image: url("../../public/images/galaxy.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
 }
 
 .manage{
@@ -203,7 +311,10 @@ body{
     cursor: pointer;
 }
 .each__itemContainer:hover{
-    background-color: #6C757D !important;
+    background-image: url("../../public/images/galaxy.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
     border-left:10px solid red;
 }
 
@@ -211,7 +322,7 @@ body{
     transition: all 200ms ease-in;
 }
 .each__itemContainer div:hover{
-    color: #26223B !important;
+    color: red !important;
 }
 
 /* MANAGE CURRENT STATUS */
@@ -254,7 +365,6 @@ body{
 }
 
 .back__page:hover{
-    background-color: #48c2e74b;
+    background-color: rgba(255, 0, 0, 0.515);
     color: #26223B !important;
 }
-

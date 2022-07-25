@@ -6,9 +6,9 @@
 
         {{-- CURRENT PAGE STATUS --}}
         <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-2">
-            <a href="" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
+            <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
             <div class="mx-3 text-light">/</div>
-            <a href="" class="text-light text-decoration-none">Create Category <i class="fa fa-plus"></i></a>
+            <a href="{{ route("category.create") }}" class="text-light text-decoration-none">Create Category <i class="fa fa-plus"></i></a>
             <div class="mx-3 text-light">/</div>
             <div  class="text-secondary text-decoration-none">Category List<i class="fa fa-list-squares"></i></div>
         </div>
@@ -87,7 +87,7 @@
                             </tr>
                         @empty
                             <tr class="" >
-                                <td class="text-center" colspan="5"> There is no category 🚀</td>
+                                <td class="text-center" colspan="6"> There is no category 🚀</td>
                             </tr>
                         @endforelse
                     </tbody>

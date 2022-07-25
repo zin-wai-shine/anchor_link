@@ -15,6 +15,9 @@ class CreateItemsTable extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->foreignId('category_id');
+            $table->longText('photo');
             $table->timestamps();
         });
     }

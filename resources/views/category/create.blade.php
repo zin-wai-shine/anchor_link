@@ -23,6 +23,9 @@
        {{-- CREATE STATUS --}}
         <div class="create__status bg-primary">
             <div class="row p-4 h-100">
+                <div class="w-100 d-flex justify-content-center">
+                    <h2 class="mb-0 text-light fw-bold text-uppercase">Create Category <i class="fa fa-layer-group"></i></h2>
+                </div>
                 <div class="col-6 h-100 d-flex flex-column justify-content-center px-5">
                     <form action="{{ route('category.store') }}" method="post">
                         @csrf
