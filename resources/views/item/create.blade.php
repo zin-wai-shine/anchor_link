@@ -29,18 +29,18 @@
                             <div class="w-75">
                                 <div class="d-flex align-items-center">
                                     <select
-                                        name="category"
+                                        name="type"
                                         id=""
-                                        class="form-control form-control-lg bg-primary text-light border-light @error('title') is-invalid @enderror"
+                                        class="form-control form-control-lg bg-primary text-light border-light @error('type') is-invalid @enderror"
                                     >
                                         <option value="" class="text-black-50">Select Category . . . . </option>
-                                        @foreach(\App\Models\Category::all() as $category)
-                                            <option value="{{ $category->id }}" {{ old('category')==$category->id ? "selected" : ''}}>{{ $category->title }}</option>
+                                        @foreach(\App\Models\Type::all() as $data)
+                                            <option value="{{ $data->id }}" {{ old('type')==$data->id ? "selected" : ''}}>{{ $data->title }}</option>
                                         @endforeach
 
                                     </select>
                                 </div>
-                                @error('category')
+                                @error('type')
                                 <div class="text-danger h5 mt-2">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -52,7 +52,7 @@
                                         name="title"
                                         value="{{ old('title') }}"
                                         class="form-control form-control-lg bg-primary text-light border-light @error('title') is-invalid @enderror"
-                                        placeholder="Paste Link . . . ."
+                                        placeholder="Create Item . . . ."
                                     >
                                 </div>
                                 @error('title')

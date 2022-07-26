@@ -9,7 +9,6 @@
             <div class="dropLink__container d-flex align-items-center justify-content-between">
                 <div class="home__page">
                     <a href="{{ route('home') }}" class="text-decoration-none text-light fw-bold nav__link">
-                        Go To Home
                         <i class="fa fa-house mx-3"></i>
                     </a>
                 </div>
@@ -17,7 +16,7 @@
             {{--WEB PAGE ACTION--}}
                 <div class="select__category web__drop">
                     <div class="text-decoration-none text-light fw-bold nav__link " id="clickWeb">
-                        Travel To Webpage  <i class="fa fa-link"></i>
+                        Learn By Webpage  <i class="fa fa-link"></i>
                         <i class="fa fa-angle-down mx-3"></i>
                     </div>
                    @include('layouts.drop.web')
@@ -26,7 +25,7 @@
             {{--YOUTUBE PAGE ACTION--}}
                 <div class="select__category youtube__drop">
                     <div class="text-decoration-none text-light fw-bold nav__link " id="clickYoutube">
-                        Travel To Youtube  <i class="fa fa-link"></i>
+                        Learn By Youtube  <i class="fa fa-link"></i>
                         <i class="fa fa-angle-down mx-3"></i>
                     </div>
                     @include('layouts.drop.youtube')
@@ -98,7 +97,7 @@
                             ABOVE OF CREATE CATEGORY DROPDOWN--}}
 
                {{-- CREATE ITEMS --}}
-                            <a href="{{ route("manage") }}" class="manage__item mt-4 text-decoration-none w-100
+                            <a href="{{ route("manage") }}" target="_blank" class="manage__item mt-4 text-decoration-none w-100
                                     bg-light text-primary py-1 px-3 d-flex justify-content-between
                                     align-items-center"
                                  id="clickCreateItem"

@@ -13,7 +13,7 @@
 
         {{-- CREATE STATUS --}}
         <div class="list__status bg-primary position-relative p-5">
-            <a href="{{ route('client.index') }}" class="back__page d-flex justify-content-center align-items-center fw-bold text-decoration-none">
+            <a href="{{ route('active.index') }}" class="back__page d-flex justify-content-center align-items-center fw-bold text-decoration-none">
                 <i class="fa fa-angles-left text-light"></i><i class="fa fa-angles-left text-light"></i>
             </a>
             <div class="row h-100  p-5">

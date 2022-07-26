@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Models\Item;
+use App\Models\Type;
 
 class ItemController extends Controller
 {
@@ -18,7 +19,7 @@ class ItemController extends Controller
         $items = Item::when(request('keyword'),function($q){
             $keyword = request('keyword');
             $q->orWhere("title","like","%$keyword%");
-        })->with('category')->latest('id')->paginate('7')->withQueryString();
+        })->with('type')->latest('id')->paginate('7')->withQueryString();
         return view('item.index',compact('items'));
     }
 
@@ -42,7 +43,7 @@ class ItemController extends Controller
     {
         $item = new Item();
         $item->title = $request->title;
-        $item->category_id = $request->category;
+        $item->type_id = $request->type;
         $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
         $request->file('photo')->storeAs('public/images',$fileNewName);
         $item->photo = $fileNewName;
@@ -83,7 +84,7 @@ class ItemController extends Controller
     public function update(UpdateItemRequest $request, Item $item)
     {
         $item->title = $request->title;
-        $item->category_id = $request->category;
+        $item->type_id = $request->type;
         $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
         $request->file('photo')->storeAs('public/images',$fileNewName);
         $item->photo = $fileNewName;

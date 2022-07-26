@@ -27,3 +27,4 @@ Route::resource('/user',\App\Http\Controllers\UserController::class);
 Route::resource('/item',\App\Http\Controllers\ItemController::class);
 Route::resource('/client',\App\Http\Controllers\ClientController::class);
 Route::resource('/active',\App\Http\Controllers\ActiveController::class);
+Route::resource('/type',\App\Http\Controllers\TypeController::class);

@@ -25,7 +25,7 @@ class UpdateItemRequest extends FormRequest
     {
         return [
             'title' => 'required|min:10',
-            'category' => 'required',
+            'type' => 'required',
             'photo' => 'required|mimes:jpg,png,jpeg,svg|file'
         ];
     }
