@@ -46,13 +46,19 @@
 <div class="w-100 mb-5">
     <h5 class="text-light mx-3">🔘 Manage Clients</h5>
 
-    <a href="" class="my-4 each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
+    <a href="{{ route("client.index") }}" class="my-4 each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
         <div  class="text-light w-100 h-100 d-flex justify-content-between align-items-center px-4 mx-2">
-            <span>Emails</span>
+            <span>Emails List</span>
             <i class="fa fa-envelope"></i>
         </div>
     </a>
-    <a href="" class="my-4 each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
+    <a href="{{ route("client.create") }}" class="my-4 each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
+        <div  class="text-light w-100 h-100 d-flex justify-content-between align-items-center px-4 mx-2">
+            <span>Add Email</span>
+            <i class="fa fa-envelope-open-text"></i>
+        </div>
+    </a>
+    <a href="{{ route("active.index") }}" class="my-4 each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
         <div  class="text-light w-100 h-100 d-flex justify-content-between align-items-center px-4 mx-2">
             <span>Active</span>
             <i class="fa fa-user"></i>

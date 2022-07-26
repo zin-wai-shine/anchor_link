@@ -27,8 +27,9 @@
             </a>
             <div class="row p-4 h-100">
                 <div class="col-6 h-100 d-flex flex-column justify-content-center px-5">
-                    <form action="{{ route('category.store') }}" method="post">
+                    <form action="{{ route('category.update',$category->id) }}" method="post">
                         @csrf
+                        @method('put')
                         <div class="">
                             <div class="d-flex align-items-center">
                                 <input

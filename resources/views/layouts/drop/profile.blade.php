@@ -1,4 +1,7 @@
-<div class="edit__profile__container bg-primary p-2 animate__animated animate__fadeIn animate__faster display__action" id="profileStatus">
+<div
+    class="edit__profile__container bg-primary p-2 animate__animated animate__fadeIn animate__faster display__action"
+    id="profileStatus"
+>
     <div class="d-flex flex-column align-items-center justify-content-center p-5 w-100">
         <i class="fa fa-close text-light itemClose" id="profileClose"></i>
 

@@ -87,6 +87,7 @@ body{
     height: 700px;
     position: absolute;
     border-radius: 5px;
+    border:5px dashed #B4D9E4;
     top: 15%;
     right:0;
     left:0;

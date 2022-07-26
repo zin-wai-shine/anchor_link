@@ -65,7 +65,7 @@
                     @forelse($items as $item)
                         <tr class="text-center align-middle">
                             <td>{{ $item->id }}</td>
-                            <td>{{ $item->title }}</td>
+                            <td><a href="{{ $item->title }}" class="text-light">{{ $item->title }}</a></td>
                             <td class="h4"><img class="item__logo__img" src="{{ asset('storage/images/'.$item->photo ) }}" alt=""></td>
                             <td>{{ $item->category->title }}</td>
                             <td>
