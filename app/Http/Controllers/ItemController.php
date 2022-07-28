@@ -49,7 +49,7 @@ class ItemController extends Controller
         $item->photo = $fileNewName;
         $item->save();
 
-        return redirect()->back()->with('status','anchor item is created.');
+        return redirect()->back()->with('status','anchor youtube item is created.');
     }
 
     /**
@@ -90,7 +90,7 @@ class ItemController extends Controller
         $item->photo = $fileNewName;
         $item->update();
 
-        return redirect()->route("item.index")->with('status','anchor item is created.');
+        return redirect()->route("item.index")->with('status','anchor youtube item is created.');
     }
 
     /**
@@ -103,6 +103,6 @@ class ItemController extends Controller
     {
         $item->delete();
 
-        return redirect()->back()->with('status','deleted item is completely.');
+        return redirect()->back()->with('status','deleted youtube item is completely.');
     }
 }

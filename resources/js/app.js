@@ -24,6 +24,10 @@ require('./bootstrap');
     const updateName = document.getElementById('updateName');
     const editNameClose = document.getElementById('editNameClose');
 
+   /* const categoryCase = document.querySelectorAll('#categoryCase');
+    const categoryChildContainer = document.querySelectorAll('#categoryChildContainer');*/
+
+
 /* WEB DROP */
     function webFun(){
         if(webItem.classList.contains('display__action')){
@@ -112,4 +116,23 @@ require('./bootstrap');
     }
     editName.addEventListener('click',() => { editNameStatus() });
     editNameClose.addEventListener('click',()=>{ editNameStatus() });
+
+/*CLICK YOUTUBE CATEGORY */
+
+
+
+      /*  categoryCase.forEach((category)=>{
+            category.addEventListener('click',()=>{
+                categoryChildContainer.forEach((categoryChild) => {
+                    if(categoryChild.classList.contains('display__action')){
+                        categoryChild.classList.remove('display__action');
+                    } else{
+                        categoryChild.classList.add('display__action');
+                    }
+                })
+            });
+        });*/
+
+
+
 

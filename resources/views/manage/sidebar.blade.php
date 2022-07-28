@@ -1,5 +1,5 @@
-<div class="w-100 mb-3">
-    <h5 class="text-light mx-3">🔘 Manage Users</h5>
+<div class="w-100 mb-4">
+    <h5 class="text-light mx-3">🔵 Manage Users</h5>
 
     <a href="{{ route('user.index') }}" class=" each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
         <div  class="text-light w-100 h-100 h-100 d-flex justify-content-between align-items-center m-0 px-4 mx-2">
@@ -9,8 +9,8 @@
     </a>
 </div>
 
-<div class="w-100 mb-3">
-    <h5 class="text-light mx-3">🔘 Manage Categories</h5>
+<div class="w-100 mb-4">
+    <h5 class="text-light mx-3">🔵 Manage Categories</h5>
 
     <a  href="{{ route('category.create') }}" class=" text-decoration-none  each__itemContainer d-flex justify-content-center align-items-center">
         <div class="text-light w-100 h-100 d-flex justify-content-between align-items-center px-4 mx-2">
@@ -27,8 +27,8 @@
 </div>
 
 
-<div class="w-100 mb-3">
-    <h5 class="text-light mx-3">🔘 Manage Typeof</h5>
+<div class="w-100 mb-4">
+    <h5 class="text-light mx-3">🔵 Manage Typeof</h5>
 
     <a href="{{ route("type.create") }}" class=" each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
         <div  class="text-light w-100 h-100 d-flex justify-content-between align-items-center px-4 mx-2">
@@ -45,8 +45,8 @@
 
 </div>
 
-<div class="w-100 mb-3">
-    <h5 class="text-light mx-3">🔘 Manage Items</h5>
+<div class="w-100 mb-4">
+    <h5 class="text-danger mx-3">🔴 Manage Youtube Items </h5>
 
     <a href="{{ route("item.create") }}" class=" each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
         <div  class="text-light w-100 h-100 d-flex justify-content-between align-items-center px-4 mx-2">
@@ -61,6 +61,24 @@
         </div>
     </a>
 </div>
+
+<div class="w-100 mb-4">
+    <h5 class="text-warning mx-3">⚪ Manage Webpage Items </h5>
+
+    <a href="{{ route("web.create") }}" class=" each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
+        <div  class="text-light w-100 h-100 d-flex justify-content-between align-items-center px-4 mx-2">
+            <span>Create Item</span>
+            <i class="fa fa-plus-circle"></i>
+        </div>
+    </a>
+    <a href="{{ route('web.index') }}" class=" each__itemContainer text-decoration-none d-flex justify-content-center align-items-center">
+        <div  class="text-light w-100 h-100 d-flex justify-content-between align-items-center px-4 mx-2">
+            <span>Items List</span>
+            <i class="fa fa-layer-group"></i>
+        </div>
+    </a>
+</div>
+
 
 
 <div class="w-100  mt-5">

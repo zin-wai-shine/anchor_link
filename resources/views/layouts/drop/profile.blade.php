@@ -1,9 +1,5 @@
 <div
-    class="edit__profile__container bg-primary p-2 animate__animated animate__fadeIn animate__faster
-        @if(!$errors->has('photo'))
-            display__action
-        @endif
-        "
+    class="edit__profile__container bg-primary p-2 animate__animated animate__fadeIn animate__faster display__action"
     id="profileStatus"
 >
 

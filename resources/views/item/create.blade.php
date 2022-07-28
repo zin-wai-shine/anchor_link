@@ -52,7 +52,7 @@
                                         name="title"
                                         value="{{ old('title') }}"
                                         class="form-control form-control-lg bg-primary text-light border-light @error('title') is-invalid @enderror"
-                                        placeholder="Create Item . . . ."
+                                        placeholder="Create Youtube Item . . . ."
                                     >
                                 </div>
                                 @error('title')
