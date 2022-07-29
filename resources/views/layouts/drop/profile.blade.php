@@ -1,5 +1,5 @@
 <div
-    class="edit__profile__container bg-primary p-2 animate__animated animate__fadeIn animate__faster display__action"
+    class="edit__profile__container bg-primary p-2 animate__animated animate__fadeIn animate__faster backImg display__action"
     id="profileStatus"
 >
 

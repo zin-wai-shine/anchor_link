@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container-fluid w-100 h-100 manage__container">
+    <div class="container-fluid w-100 h-100 manage__container backImg">
         <div class="row h-100">
             {{-- MANAGE STATUS --}}
             <div class="col-2 bg-primary manage__sidebar manage px-0 py-5" >

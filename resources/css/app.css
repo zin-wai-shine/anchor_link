@@ -74,6 +74,16 @@ body{
     width: 40px;
     height: 40px;
     cursor: pointer;
+   /* transition: all 200ms ease-in-out;
+    animation: rotation 7s infinite linear;*/
+}
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
 }
 .show__profile_logo{
     width: 200px;
@@ -86,19 +96,28 @@ body{
     height: 700px;
     position: absolute;
     border-radius: 5px;
-    border:5px dashed #B4D9E4;
+    border-right:5px dashed #B4D9E4;
+    border-bottom:5px dashed #B4D9E4;
+    border-left:5px dashed #ff0000;
+    border-top:5px dashed #ff0000;
     top: 15%;
     right:0;
     left:0;
     margin: 0 auto;
     z-index: 1008;
 }
-
 .home__container {
-    /*background-image: url("../../public/images/universe.jpg");*/
+    background-image: url("../../public/images/home.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     object-fit: contain;
+}
+.backImg{
+    background-image: url("../../public/images/home.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    /*box-shadow: 0 0 5px #B4D9E4;*/
 }
 
 .main__container{
@@ -107,7 +126,7 @@ body{
 
 .nav__container{
     height: 5% !important;
-    z-index: 2003 !important;
+    z-index: 1015 !important;
 }
 
 .content__container{
@@ -136,19 +155,21 @@ body{
 }
 
 .web__item{
-    width: 1300px;
-    height: 700px;
+    width:300px;
+    max-height: 500px;
     position: absolute;
     top: 5%;
-    right:15%;
     z-index: 1001;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    background-image: url("../../public/images/universe.jpg");
+   /* background-image: url("../../public/images/universe.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    object-fit: contain;
+    object-fit: contain;*/
 
+}
+.category__child{
+    background-color: #a2c3cd;
 }
 
 .youtube__item{
@@ -159,10 +180,16 @@ body{
     z-index: 1001;
     border-bottom-right-radius: 10px;
     border-bottom-left-radius: 10px;
-    background-image: url("../../public/images/galaxy.jpg");
+    /*background-image: url("../../public/images/galaxy.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    object-fit: contain;
+    object-fit: contain;*/
+}
+.rainbow{
+    border-right:1px dashed #B4D9E4;
+    border-bottom:1px dashed #B4D9E4;
+    border-left:1px dashed #ff0000;
+    border-top:1px dashed #ff0000;
 }
 
 .itemClose{
@@ -200,8 +227,10 @@ body{
     border-radius: 50%;
     padding: 7px;
     cursor:pointer;
+    border-right: 1px solid #B4D9E4 ;
+    border-left: 1px solid red;
     transition: all 200ms ease-in-out;
-    animation: rotation 2s infinite linear;
+    animation: rotation 10s infinite linear;
 }
 @keyframes rotation {
     from {
@@ -291,10 +320,6 @@ body{
 /* MANAGE STYLE */
 .manage__container{
     height: 100%;
-    background-image: url("../../public/images/galaxy.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    object-fit: contain;
 }
 
 .manage{
@@ -389,7 +414,7 @@ body{
     .category__child{
         transition: all 100ms ease-in;
         cursor:pointer;
-        border-left: 5px solid #a2c3cd;
+        border-left: 5px solid #71848a78;
     }
     .category__child:hover{
         background-image: url("../../public/images/galaxy.jpg");

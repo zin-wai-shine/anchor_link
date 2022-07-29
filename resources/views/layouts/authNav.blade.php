@@ -80,7 +80,7 @@
                             <i class="fa fa-gear text-light manage__logo" id="manageLogo"></i>
                         </div>
 
-                        <div class="manage__dropdown p-2 bg-primary animate__animated animate__fadeIn animate__faster display__action"
+                        <div class="manage__dropdown backImg rainbow p-2 bg-primary animate__animated animate__fadeIn animate__faster display__action"
                             id="manageDropdown"
                         >
                             <i class="fa fa-close text-light manage__close" id="manageClose"></i>

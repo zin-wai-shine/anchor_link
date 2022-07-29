@@ -26,7 +26,8 @@ class StoreWebRequest extends FormRequest
         return [
             'title' => 'required|min:10',
             'type' => 'required',
-            'photo' => 'required|mimes:jpg,png,jpeg,svg|file'
+            'photo' => 'required|mimes:jpg,png,jpeg,svg|file',
+            'level' => 'required|in:0,1,2'
         ];
     }
 }

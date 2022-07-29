@@ -27,22 +27,44 @@
                         @csrf
                         @method('put')
                         <div class="w-75">
-                            <div class="d-flex align-items-center">
-                                <select
-                                    name="type"
-                                    id=""
-                                    class="form-control form-control-lg bg-primary text-light border-light @error('type') is-invalid @enderror"
-                                >
-                                    <option value="" class="text-black-50">Select Category . . . . </option>
-                                    @foreach(\App\Models\Type::all() as $data)
-                                        <option value="{{ $data->id }}" {{ old('type',$web->id)==$data->id ? "selected" : ''}}>{{ $data->title }}</option>
-                                    @endforeach
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center">
+                                        <select
+                                            name="type"
+                                            id=""
+                                            class="form-control form-control-lg bg-primary text-light border-light @error('type') is-invalid @enderror"
+                                        >
+                                            <option value="" class="text-black-50">Select Type . . . . </option>
+                                            @foreach(\App\Models\Type::all() as $data)
+                                                <option value="{{ $data->id }}" {{ old('type',$web->type_id)==$data->id ? "selected" : ''}}>{{ $data->title }}</option>
+                                            @endforeach
 
-                                </select>
+                                        </select>
+                                    </div>
+                                    @error('type')
+                                    <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center">
+                                        <select
+                                            name="level"
+                                            id=""
+                                            class="form-control form-control-lg bg-primary text-light border-light @error('level') is-invalid @enderror"
+                                        >
+                                            <option value="" class="text-black-50">Select Level . . . . </option>
+                                            <option value="0" {{ old('level',$web->level)== "0" ? "selected" : ''}}>Elementary</option>
+                                            <option value="1" {{ old('level',$web->level)== "1" ? "selected" : ''}}>Intermediate</option>
+                                            <option value="2" {{ old('level',$web->level)== "2" ? "selected" : ''}}>Advanced</option>
+                                        </select>
+                                    </div>
+                                    @error('level')
+                                    <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
-                            @error('type')
-                            <div class="text-danger h5 mt-2">{{ $message }}</div>
-                            @enderror
                         </div>
 
                         <div class="w-75 my-5">
@@ -76,33 +98,15 @@
                             @enderror
                         </div>
 
-                        <div class="w-75 mb-4">
-                            <img class="" height="100" width="200" src="{{ asset('storage/webs/'.$web->photo ) }}" alt="">
-                        </div>
-
-                        <button class="btn btn-outline-light  w-25 mt-5"><i class="fa fa-plus"></i></button>
+                        <button class="btn btn-outline-light  w-25 mt-5"><i class="fa fa-clock-rotate-left"></i></button>
                     </form>
                 </div>
 
                 {{-- TRANSLATE SIDE --}}
                 <div class="col-6 text-light h-100 d-flex flex-column justify-content-center h5">
-                    <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci
-                        aperiam architecto atque, blanditiis deserunt eius mollitia nostrum odit,
-                        officiis quis reiciendis rem saepe sint voluptas. Laudantium officia pariatur porro!
+                    <div class="w-75 mb-4">
+                        <img class="rounded shadow" width="100%" src="{{ asset('storage/webs/'.$web->photo ) }}" alt="">
                     </div>
-                    <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci
-                        aperiam architecto atque, blanditiis deserunt eius mollitia nostrum odit,
-                        officiis quis reiciendis rem saepe sint voluptas. Laudantium officia pariatur porro!
-                    </div>
-
-                    <div>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci
-                        aperiam architecto atque, blanditiis deserunt eius mollitia nostrum odit,
-                        officiis quis reiciendis rem saepe sint voluptas. Laudantium officia pariatur porro!
-                    </div>
-
                 </div>
             </div>
         </div>

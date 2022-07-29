@@ -21,11 +21,11 @@
             </a>
 
             <div class="w-50 text-center">
-                <h3 class="text-light">{{$item->category->title}} <i class="fa {{ $item->category->icon  }}"></i></h3>
+                <h3 class="text-light">{{$item->type->title}}</h3>
 
                 <h4 class=" my-4"><a href="{{ $item->title }}" class="text-light">{{ $item->title }}></a></h4>
 
-                <img class="w-100 show__item__logo rounded" src="{{ asset('storage/images/'.$item->photo) }}" alt="">
+                <img class="w-100 show__item__logo rounded" src="{{ asset('storage/youtube/'.$item->photo) }}" alt="">
             </div>
         </div>
 

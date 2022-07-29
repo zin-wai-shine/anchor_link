@@ -24,9 +24,10 @@ class UpdateItemRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|min:10',
+            'title' => 'required|min:10|unique:items,title,'.$this->route('item')->id,
             'type' => 'required',
-            'photo' => 'required|mimes:jpg,png,jpeg,svg|file'
+            'photo' => 'mimes:jpg,png,jpeg,svg|file',
+            'level' => 'required|in:0,1,2'
         ];
     }
 }

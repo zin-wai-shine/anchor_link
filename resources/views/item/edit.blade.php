@@ -14,10 +14,7 @@
         </div>
 
         {{-- CREATE STATUS --}}
-        <div class="list__status bg-primary p-3 position-relative">
-            <a href="{{ route('item.index') }}" class="back__page d-flex justify-content-center align-items-center fw-bold text-decoration-none">
-                <i class="fa fa-angles-left text-light"></i><i class="fa fa-angles-left text-light"></i>
-            </a>
+        <div class="list__status bg-primary p-3">
             <div class="row h-100  p-5">
 
                 <div class="w-100 text-center">
@@ -28,24 +25,46 @@
                 <div class="col-6 d-flex flex-column justify-content-center h-100 ">
                     <form action="{{ route('item.update',$item->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        @method('put');
+                        @method('put')
                         <div class="w-75">
-                            <div class="d-flex align-items-center">
-                                <select
-                                    name="category"
-                                    id=""
-                                    class="form-control form-control-lg bg-primary text-light border-light @error('title') is-invalid @enderror"
-                                >
-                                    <option value="" class="text-black-50">Select Category . . . . </option>
-                                    @foreach(\App\Models\Type::all() as $data)
-                                        <option value="{{ $data->id }}" {{ old('category',$item->type_id)==$data->id ? "selected" : ''}}>{{ $data->title }}</option>
-                                    @endforeach
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center">
+                                        <select
+                                            name="type"
+                                            id=""
+                                            class="form-control form-control-lg bg-primary text-light border-light @error('type') is-invalid @enderror"
+                                        >
+                                            <option value="" class="text-black-50">Select Type . . . . </option>
+                                            @foreach(\App\Models\Type::all() as $data)
+                                                <option value="{{ $data->id }}" {{ old('type',$item->type_id)==$data->id ? "selected" : ''}}>{{ $data->title }}</option>
+                                            @endforeach
 
-                                </select>
+                                        </select>
+                                    </div>
+                                    @error('type')
+                                    <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="d-flex align-items-center">
+                                        <select
+                                            name="level"
+                                            id=""
+                                            class="form-control form-control-lg bg-primary text-light border-light @error('level') is-invalid @enderror"
+                                        >
+                                            <option value="" class="text-black-50">Select Level . . . . </option>
+                                            <option value="0" {{ old('level',$item->level)== "0" ? "selected" : ''}}>Elementary</option>
+                                            <option value="1" {{ old('level',$item->level)== "1" ? "selected" : ''}}>Intermediate</option>
+                                            <option value="2" {{ old('level',$item->level)== "2" ? "selected" : ''}}>Advanced</option>
+                                        </select>
+                                    </div>
+                                    @error('level')
+                                    <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
-                            @error('category')
-                            <div class="text-danger h5 mt-2">{{ $message }}</div>
-                            @enderror
                         </div>
 
                         <div class="w-75 my-5">
@@ -55,7 +74,7 @@
                                     name="title"
                                     value="{{ old('title',$item->title) }}"
                                     class="form-control form-control-lg bg-primary text-light border-light @error('title') is-invalid @enderror"
-                                    placeholder="Paste Link . . . ."
+                                    placeholder="Create Youtube Item . . . ."
                                 >
                             </div>
                             @error('title')
@@ -79,19 +98,18 @@
                             @enderror
                         </div>
 
-                        <div class="w-75 mb-4">
-                            <img class="w-100" src="{{ asset('storage/images/'.$item->photo) }}" alt="">
-                        </div>
-
                         <button class="btn btn-outline-light  w-25 mt-5"><i class="fa fa-clock-rotate-left"></i></button>
                     </form>
                 </div>
 
                 {{-- TRANSLATE SIDE --}}
-                <div class="col-6 text-light h-100 d-flex flex-column align-items-center justify-content-center h5">
-                    <div>
-                       <h1>Edit Item</h1>
+                <div class="col-6 text-light h-100 d-flex flex-column justify-content-center h5">
+
+                    <div class="w-75 mb-4">
+                        <img  width="100%" class="rounded shadow" src="{{ asset('storage/youtube/'.$item->photo) }}" alt="">
                     </div>
+
+
                 </div>
             </div>
         </div>

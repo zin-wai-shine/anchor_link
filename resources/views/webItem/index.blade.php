@@ -56,6 +56,7 @@
                         <th>Title</th>
                         <th>Logo</th>
                         <th>Typeof</th>
+                        <th>Level</th>
                         <th>Management</th>
                         <th>Dates:Times</th>
                     </tr>
@@ -68,6 +69,7 @@
                             <td class="text-wrap"><a href="{{ $item->title }}" class="text-light">{{ $item->title }}</a></td>
                             <td class="h4"><img class="item__logo__img" src="{{ asset('storage/webs/'.$item->photo ) }}" alt=""></td>
                             <td>{{ $item->type->title }}</td>
+                            <td>{{ $item->level }}</td>
                             <td class="text-nowrap">
                                 <a href="{{ route('web.show',$item->id) }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
                                 <a href="{{ route('web.edit',$item->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
@@ -87,7 +89,7 @@
                         </tr>
                     @empty
                         <tr class="" >
-                            <td class="text-center" colspan="6"> There is no item 🚀</td>
+                            <td class="text-center" colspan="7"> There is no item 🚀</td>
                         </tr>
                     @endforelse
                     </tbody>
@@ -95,7 +97,7 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                     <div>{{ $items->onEachSide(1)->links() }}</div>
-                    <div class="text-light h4">{{ $items->count() }}</div>
+                    <div class="text-light h4">{{ \App\Models\Web::all()->count() }}</div>
                 </div>
             </div>
         </div>

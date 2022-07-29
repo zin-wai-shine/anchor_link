@@ -29,4 +29,5 @@ Route::resource('/client',\App\Http\Controllers\ClientController::class);
 Route::resource('/active',\App\Http\Controllers\ActiveController::class);
 Route::resource('/type',\App\Http\Controllers\TypeController::class);
 Route::resource('/web',\App\Http\Controllers\WebController::class);
-Route::get('/link/{link}',[\App\Http\Controllers\ShowlinkController::class,'index'])->name('showLink');
+Route::get('/web-link/{link}',[\App\Http\Controllers\ShowlinkController::class,'web'])->name('webLink');
+Route::get('/youtube-link/{link}',[\App\Http\Controllers\ShowlinkController::class,'youtube'])->name('youtubeLink');

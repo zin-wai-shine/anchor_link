@@ -27,22 +27,44 @@
                             @csrf
 
                             <div class="w-75">
-                                <div class="d-flex align-items-center">
-                                    <select
-                                        name="type"
-                                        id=""
-                                        class="form-control form-control-lg bg-primary text-light border-light @error('type') is-invalid @enderror"
-                                    >
-                                        <option value="" class="text-black-50">Select Category . . . . </option>
-                                        @foreach(\App\Models\Type::all() as $data)
-                                            <option value="{{ $data->id }}" {{ old('type')==$data->id ? "selected" : ''}}>{{ $data->title }}</option>
-                                        @endforeach
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <select
+                                                name="type"
+                                                id=""
+                                                class="form-control form-control-lg bg-primary text-light border-light @error('type') is-invalid @enderror"
+                                            >
+                                                <option value="" class="text-black-50">Select Category . . . . </option>
+                                                @foreach(\App\Models\Type::all() as $data)
+                                                    <option value="{{ $data->id }}" {{ old('type')==$data->id ? "selected" : ''}}>{{ $data->title }}</option>
+                                                @endforeach
 
-                                    </select>
+                                            </select>
+                                        </div>
+                                        @error('type')
+                                        <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="d-flex align-items-center">
+                                            <select
+                                                name="level"
+                                                id=""
+                                                class="form-control form-control-lg bg-primary text-light border-light @error('level') is-invalid @enderror"
+                                            >
+                                                <option value="" class="text-black-50">Select Level . . . . </option>
+                                                <option value="0" {{ old('level')== "0" ? "selected" : ''}}>Elementary</option>
+                                                <option value="1" {{ old('level')== "1" ? "selected" : ''}}>Intermediate</option>
+                                                <option value="2" {{ old('level')== "2" ? "selected" : ''}}>Advanced</option>
+                                            </select>
+                                        </div>
+                                        @error('level')
+                                            <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                        @enderror
+                                    </div>
                                 </div>
-                                @error('type')
-                                <div class="text-danger h5 mt-2">{{ $message }}</div>
-                                @enderror
                             </div>
 
                             <div class="w-75 my-5">

@@ -43,9 +43,11 @@ class WebController extends Controller
         $web = new Web();
         $web->title = $request->title;
         $web->type_id = $request->type;
-        $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
-        $request->file('photo')->storeAs('public/webs',$fileNewName);
-        $web->photo = $fileNewName;
+        if($request->hasFile('photo')){
+            $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
+            $request->file('photo')->storeAs('public/webs',$fileNewName);
+            $web->photo = $fileNewName;
+        }
         $web->save();
 
         return redirect()->back()->with('status','anchor web item is created.');
@@ -84,9 +86,11 @@ class WebController extends Controller
     {
         $web->title = $request->title;
         $web->type_id = $request->type;
-        $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
-        $request->file('photo')->storeAs('public/webs',$fileNewName);
-        $web->photo = $fileNewName;
+        if($request->hasFile('photo')){
+            $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
+            $request->file('photo')->storeAs('public/webs',$fileNewName);
+            $web->photo = $fileNewName;
+        }
         $web->update();
 
         return redirect()->route("web.index")->with('status','anchor web item is created.');

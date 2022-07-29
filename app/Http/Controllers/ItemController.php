@@ -45,8 +45,9 @@ class ItemController extends Controller
         $item->title = $request->title;
         $item->type_id = $request->type;
         $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
-        $request->file('photo')->storeAs('public/images',$fileNewName);
+        $request->file('photo')->storeAs('public/youtube',$fileNewName);
         $item->photo = $fileNewName;
+        $item->level = $request->level;
         $item->save();
 
         return redirect()->back()->with('status','anchor youtube item is created.');
@@ -85,9 +86,12 @@ class ItemController extends Controller
     {
         $item->title = $request->title;
         $item->type_id = $request->type;
-        $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
-        $request->file('photo')->storeAs('public/images',$fileNewName);
-        $item->photo = $fileNewName;
+        $item->level = $request->level;
+        if($request->hasFile('photo')){
+            $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
+            $request->file('photo')->storeAs('public/youtube',$fileNewName);
+            $item->photo = $fileNewName;
+        }
         $item->update();
 
         return redirect()->route("item.index")->with('status','anchor youtube item is created.');
