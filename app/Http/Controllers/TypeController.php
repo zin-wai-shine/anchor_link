@@ -42,7 +42,7 @@ class TypeController extends Controller
     {
 
         $type = new Type();
-        $type->title = $request->title;
+        $type->title = ucfirst($request->title);
         $type->category_id = $request->category;
         $type->save();
 
@@ -80,7 +80,7 @@ class TypeController extends Controller
      */
     public function update(UpdateTypeRequest $request, Type $type)
     {
-        $type->title = $request->title;
+        $type->title = ucfirst($request->title);
         $type->category_id = $request->category;
         $type->update();
         return redirect()->route("type.index")->with('status','updated typeof is completely.');

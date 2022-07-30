@@ -105,7 +105,6 @@ class WebController extends Controller
     public function destroy(Web $web)
     {
         $web->delete();
-
         return redirect()->back()->with('status','deleted web item is completely.');
     }
 }

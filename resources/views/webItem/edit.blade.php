@@ -18,7 +18,7 @@
             <div class="row h-100  p-5">
 
                 <div class="w-100 text-center">
-                    <h2 class=" text-light mb-0 text-uppercase fw-bold"> Edit Web Item <i class="fa fa-edit"></i></h2>
+                    <h2 class=" text-warning mb-0 text-uppercase fw-bold"> Edit Web Item <i class="fa fa-edit"></i></h2>
                 </div>
 
                 {{-- CREATER SIDE --}}

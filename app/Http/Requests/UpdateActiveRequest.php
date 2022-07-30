@@ -25,7 +25,7 @@ class UpdateActiveRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:15',
-            'email' => 'required|unique:actives,email,'.$this->route('active')->id,
+            'email' => 'required|email|unique:actives,email,'.$this->route('active')->id,
         ];
     }
 }

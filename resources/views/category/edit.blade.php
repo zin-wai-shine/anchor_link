@@ -59,7 +59,7 @@
                             <div class="text-danger h5 mt-2">{{ $message }}</div>
                             @enderror
                         </div>
-                        <button class="btn btn-outline-light btn-lg w-25 mt-5"><i class="fa fa-plus text-light fw-bold"></i></button>
+                        <button class="btn btn-outline-light btn-lg w-25 mt-5"><i class="fa fa-clock-rotate-left text-light fw-bold"></i></button>
                     </form>
                 </div>
 

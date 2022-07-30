@@ -53,7 +53,9 @@
                         <th>#</th>
                         <th>Name <i class="fa fa-user"></i></th>
                         <th>Email <i class="fa fa-envelope"></i></th>
+                        <th>Role <i class="fa fa-typo3"></i></th>
                         <th>Profile <i class="fa fa-image-portrait"></i></th>
+                        <th>Management <i class="fa fa-list-check"></i></th>
                         <th>Dates:Times <i class="fa fa-clock"></i></th>
                     </tr>
                     </thead>
@@ -64,7 +66,8 @@
                             <td>{{ $user->id }}</td>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <th>
+                            <td>{{ $user->role }}</td>
+                            <td>
                                 <div class="w-100 d-flex justify-content-center align-items-center">
                                     <div
                                         id=""
@@ -78,7 +81,18 @@
                                     </div>
                                 </div>
 
-                            </th>
+                            </td>
+
+                            <td>
+                                <a href="{{ route('user.show',$user->id)  }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
+                                <a href="{{ route('user.edit',$user->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+                                <form action="{{ route('user.destroy',$user->id) }}" class="d-inline-block" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
+                                </form>
+                            </td>
+
                             <td>
                                 <div>
                                     {{ $user->created_at->format('d / m / Y') }}
@@ -89,7 +103,7 @@
                         </tr>
                     @empty
                         <tr class="" >
-                            <td class="text-center" colspan="6"> There is no item 🚀</td>
+                            <td class="text-center" colspan="7"> There is no item 🚀</td>
                         </tr>
                     @endforelse
                     </tbody>

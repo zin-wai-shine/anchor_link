@@ -10,15 +10,18 @@
             <div class="mx-3 text-light">/</div>
             <a href="{{ route('item.index') }}" class="text-light text-decoration-none">Item List <i class="fa fa-plus"></i></a>
             <div class="mx-3 text-light">/</div>
-            <div  class="text-secondary text-decoration-none">Create Item  <i class="fa fa-list-squares"></i></div>
+            <div  class="text-secondary text-decoration-none">Edit Item  <i class="fa fa-list-squares"></i></div>
         </div>
 
         {{-- CREATE STATUS --}}
-        <div class="list__status bg-primary p-3">
+        <div class="list__status bg-primary p-3 position-relative">
+            <a href="{{ route('item.index') }}" class="back__page d-flex justify-content-center align-items-center fw-bold text-decoration-none">
+                <i class="fa fa-angles-left text-light"></i><i class="fa fa-angles-left text-light"></i>
+            </a>
             <div class="row h-100  p-5">
 
                 <div class="w-100 text-center">
-                    <h2 class=" text-light mb-0 text-uppercase fw-bold"> Create Anchor Item <i class="fa fa-link"></i></h2>
+                    <h2 class=" text-danger mb-0 text-uppercase fw-bold"> Edit Youtube Item <i class="fa fa-link"></i></h2>
                 </div>
 
                 {{-- CREATER SIDE --}}

@@ -51,7 +51,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::all()->find($id);
+        return view('user.show',compact('user'));
     }
 
     /**
@@ -62,7 +63,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::all()->find($id);
+        return view('user.edit',compact('user'));
     }
 
     /**
@@ -74,20 +76,44 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'name' => 'required|max:15',
-            'photo' => 'mimes:png,jpg,jpeg,svg'
-        ]);
-        $user = User::all()->find($id);
-        $user->name = $request->name;
-        if($request->hasFile('photo')){
-            $newFileName = uniqid()."_profile_logo.".$request->file('photo')->extension();
-            $request->file('photo')->storeAs('public/profiles',$newFileName);
-            $user->logo = $newFileName;
-        }
-        $user->update();
+        if($request->name || $request->photo){
+            $request->validate([
+                'name' => 'required|max:15',
+                'photo' => 'mimes:png,jpg,jpeg,svg'
+            ]);
+            $user = User::all()->find($id);
+            $user->name = $request->name;
+            if($request->hasFile('photo')){
+                $newFileName = uniqid()."_profile_logo.".$request->file('photo')->extension();
+                $request->file('photo')->storeAs('public/profiles',$newFileName);
+                $user->logo = $newFileName;
+            }
+            $user->update();
 
-        return redirect()->back()->with('status','updated profile is completely.');
+            return redirect()->back()->with('status','updated profile is completely.');
+        }
+
+        if($request->userName || $request->userPhoto || $request->role || $request->email){
+            $request->validate([
+                'userName' => 'required|max:15',
+                'email'    => 'required|email',
+                'userPhoto' => 'mimes:png,jpg,jpeg,svg',
+                'role'      => 'required|in:0,1,2',
+            ]);
+            $user = User::all()->find($id);
+            $user->name = $request->userName;
+            $user->email= $request->email;
+            $user->role = $request->role;
+            if($request->hasFile('userPhoto')){
+                $newFileName = uniqid()."_profile_logo.".$request->file('userPhoto')->extension();
+                $request->file('userPhoto')->storeAs('public/profiles',$newFileName);
+                $user->logo = $newFileName;
+            }
+            $user->update();
+
+            return redirect()->route('user.index')->with('status',$user->name.'is updated.');
+        }
+
     }
 
     /**
@@ -98,6 +124,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::all()->find($id);
+        $user->delete();
+        return redirect()->back()->with('status',$user->name.'is deleted.');
     }
 }

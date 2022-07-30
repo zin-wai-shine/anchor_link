@@ -24,8 +24,14 @@ require('./bootstrap');
     const updateName = document.getElementById('updateName');
     const editNameClose = document.getElementById('editNameClose');
 
-   /* const categoryCase = document.querySelectorAll('#categoryCase');
+/*    const categoryCase = document.querySelectorAll('#categoryCase');
     const categoryChildContainer = document.querySelectorAll('#categoryChildContainer');*/
+
+/*
+    const yCategoryText = document.querySelectorAll('#yCategoryText');
+    const wCategoryText = document.querySelectorAll('#wCategoryText');
+*/
+
 
 
 /* WEB DROP */
@@ -48,6 +54,15 @@ require('./bootstrap');
     });
 
 /* YOUTUBE DROP */
+    /*function closeItem(){
+        yCategoryText.forEach((item)=> {
+            item.classList.remove('active__category')
+            categoryChildContainer.forEach((category)=>{
+                category.classList.add('display__action')
+            })
+        });
+    };*/
+
     function youtubeFun(){
         if(youtubeItem.classList.contains('display__action')){
             webItem.classList.add('display__action');
@@ -58,11 +73,13 @@ require('./bootstrap');
             youtubeItem.classList.remove('display__action');
         }else{
             youtubeItem.classList.add('display__action');
+          /*  closeItem();*/
         }
     }
     clickYoutube.addEventListener('click',()=>{youtubeFun();});
     youtubeItemClose.addEventListener('click',()=>{
         youtubeItem.classList.add('display__action');
+        closeItem();
     });
 
 /* MANAGE DROP DOWN */
@@ -119,20 +136,25 @@ require('./bootstrap');
 
 /*CLICK YOUTUBE CATEGORY */
 
+/*    yCategoryText.forEach((item)=>{
+            item.addEventListener('click',()=>{
+                yCategoryText.forEach((item)=>{
+                    item.classList.remove('active__category')
 
-
-      /*  categoryCase.forEach((category)=>{
-            category.addEventListener('click',()=>{
-                categoryChildContainer.forEach((categoryChild) => {
-                    if(categoryChild.classList.contains('display__action')){
-                        categoryChild.classList.remove('display__action');
-                    } else{
-                        categoryChild.classList.add('display__action');
-                    }
                 })
-            });
-        });*/
+                item.classList.add('active__category');
+            })
+    })
 
+
+   wCategoryText.forEach((item)=>{
+        item.addEventListener('click',()=>{
+            wCategoryText.forEach((item)=>{
+               item.classList.remove('active__category')
+            })
+            item.classList.add('active__category')
+        })
+})*/
 
 
 

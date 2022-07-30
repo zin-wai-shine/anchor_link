@@ -82,7 +82,7 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        $category->title = $request->title;
+        $category->title = ucfirst($request->title);
         $category->icon  = $request->icon;
         $category->update();
 

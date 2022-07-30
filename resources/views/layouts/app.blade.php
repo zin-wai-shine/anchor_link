@@ -26,9 +26,9 @@
             @include('layouts.authNav')
         @endguest
 
-        <main class="content__container bg-secondary">
-            @yield('content')
-        </main>
+            <main class="content__container bg-secondary">
+                @yield('content')
+            </main>
     </div>
 </body>
 </html>

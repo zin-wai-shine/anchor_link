@@ -25,7 +25,7 @@ class StoreActiveRequest extends FormRequest
     {
         return [
             'name' => 'required|min:3|max:15',
-            'email' => 'required|unique:clients,email'
+            'email' => 'required|email|unique:clients,email'
         ];
     }
 }

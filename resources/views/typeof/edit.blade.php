@@ -14,11 +14,14 @@
         </div>
 
         {{-- CREATE STATUS --}}
-        <div class="list__status bg-primary p-3">
+        <div class="list__status bg-primary p-3 position-relative">
+            <a href="{{ route('type.index') }}" class="back__page d-flex justify-content-center align-items-center fw-bold text-decoration-none">
+                <i class="fa fa-angles-left text-light"></i><i class="fa fa-angles-left text-light"></i>
+            </a>
             <div class="row h-100  p-5">
 
                 <div class="w-100 text-center">
-                    <h2 class=" text-danger mb-0 text-uppercase fw-bold"> Create Typeof <i class="fa fa-layer-group"></i></h2>
+                    <h2 class=" text-light mb-0 text-uppercase fw-bold"> Edit Typeof <i class="fa fa-layer-group"></i></h2>
                 </div>
 
                 {{-- CREATER SIDE --}}
