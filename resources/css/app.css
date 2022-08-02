@@ -1,5 +1,7 @@
 
 body{
+    font-family:  'PT Sans', sans-serif;
+    letter-spacing: 2px;
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -16,11 +18,34 @@ body{
     height: 300px;
 }
 
+.select__category{
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+.select__category:hover .nav__link{
+    color:#15ffd4 !important;
+}
+
 .profile__status{
     border-radius: 50%;
     background-size: cover;
     background-repeat: no-repeat;
     object-fit: contain;
+
+}
+.profile__status:hover .profile__hover__text{
+    display: block;
+}
+.profile__hover__text{
+    position: fixed;
+    padding: 5px;
+    width: auto;
+    color: #f99400;
+    background-color: rgba(0, 0, 0, 0.58) !important;
+    border-radius: 3px;
+    top: 6%;
+    right:30px;
+    display: none;
 }
 .edit__profile__logoContainer{
     height: 50px;
@@ -94,12 +119,9 @@ body{
 .edit__profile__container{
     width: 600px;
     height: 700px;
-    position: absolute;
+    position: fixed;
     border-radius: 5px;
-    border-right:5px dashed #B4D9E4;
-    border-bottom:5px dashed #B4D9E4;
-    border-left:5px dashed #ff0000;
-    border-top:5px dashed #ff0000;
+    box-shadow: 0 0 5px #15ffd4;
     top: 15%;
     right:0;
     left:0;
@@ -112,6 +134,8 @@ body{
     background-repeat: no-repeat;
     object-fit: contain;
 }
+
+
 .backImg{
     background-image: url("../../public/images/home.jpg");
     background-size: cover;
@@ -121,16 +145,47 @@ body{
 }
 
 .main__container{
+    width: 100%;
     height: 100vh;
+    position: fixed;
+    top:4%;
+
 }
 
 .nav__container{
+    width: 100%;
     height: 5% !important;
     z-index: 1015 !important;
+    position: fixed;
+    top: 0;
 }
 
+.home__logo__container{
+    cursor: pointer;
+    transition: all 200ms ease-in;
+}
+.home__logo__container:hover{
+    color: #62E3FF !important;
+}
+.home__logo__container:hover .hover__home__text{
+    display: block;
+}
+
+.hover__home__text{
+    position: fixed;
+    top:6%;
+    padding: 5px 7px;
+    width: auto;
+    color: #f99400;
+    background-color: rgba(0, 0, 0, 0.58);
+    font-size: 14px !important;
+    font-weight: bolder;
+    display: none;
+}
+
+
 .content__container{
-    height: 95% !important;
+    height: 100% !important;
     position: relative;
 }
 
@@ -142,29 +197,10 @@ body{
     width: 30px !important;
 }
 
-.nav__link{
-    cursor: pointer;
-    transition: all 200ms ease-in;
-}
-.nav__link:hover{
-    color: #62E3FF !important;
-}
-
 .display__action{
     display: none;
 }
 
-.web__item{
-    width:330px;
-    height: auto;
-    position: absolute;
-    top: 5%;
-    z-index: 1001;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius:3px;
-    border-top: 5px solid #71848a78;
-
-}
 .category__child{
     height: 40px;
     transition: all 200ms ease-in ;
@@ -173,15 +209,138 @@ body{
     background-color: #134a53bc !important;
 }
 
-.youtube__item{
+
+/* WEB ITEM MANAGEMENT */
+.show__web__itemContainer{
+    background-color: rgba(2, 92, 36, 0.194) ;
+    position: fixed;
+    top: 5%;
+}
+
+.web__item{
     width:330px;
     height: auto;
-    position: absolute;
+    position: fixed;
     top:5%;
     z-index: 1001;
     border-bottom-right-radius: 3px;
     border-bottom-left-radius:3px;
     border-top: 5px solid #71848a78;
+
+}
+.show__web__item{
+    background-image: url("../../public/images/chrome.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    filter: blur(5px);
+}
+
+.show__item__image{
+    transition: all 200ms ease-in;
+    z-index: 1017;
+}
+.show__item__image:hover{
+    transform: scale(1.1);
+}
+.show__item__image:hover i{
+    display: block;
+}
+
+
+.empty__text{
+    font-size: 100px;
+    text-shadow: 3px 8px 3px grey;
+}
+
+  /*  YOUTUBE ITEM MANAGEMENT */
+
+
+.star__logo{
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-weight: 500 !important;
+    z-index: 1018;
+    display: none;
+    transition: all 200ms ease-in;
+}
+.star__logo:hover .add__favourite{
+    display: block;
+}
+.favourite__items{
+    transition: all 200ms ease-in;
+}
+.favourite__items:hover .favourite__close__logo{
+    display: block;
+}
+
+
+.favourite__star__logo{
+    position: relative;
+    transition: all 200ms ease-in;
+}
+.favourite__star__logo:hover .hover__favourite__text{
+    display: block;
+}
+
+.hover__favourite__text{
+    position: fixed;
+    top: 6%;
+    width:auto;
+    height: 30px;
+    padding: 5px;
+    border-radius: 3px;
+    color:#f99400!important;
+    text-transform: capitalize !important;
+    background-color: rgba(0, 0, 0, 0.58);
+    font-size: 14px !important;
+    font-weight: bolder;
+    display: none;
+}
+
+.add__favourite{
+    position: absolute;
+    top: -30px;
+    width:auto;
+    background-color: rgba(0, 0, 0, 0.58) !important;
+    border-radius: 3px;
+    text-transform: capitalize !important;
+    font-size: 13px !important;
+    font-weight: bold;
+    display: none;
+}
+.active__favourite{
+    font-weight: 500 !important;
+    color:#f99400!important;
+}
+.added__color__favourite{
+    background-color: black;
+}
+
+.show__youtube__itemContainer{
+    background-color: rgba(14, 92, 99, 0.5) ;
+    position: fixed;
+    top: 5%;
+}
+
+.youtube__item{
+    width:330px;
+    height: auto;
+    position: fixed;
+    top:5%;
+    z-index: 1001;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius:3px;
+    border-top: 5px solid #71848a78;
+}
+
+.show__youtube__item{
+    background-image: url("../../public/images/youtube.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    object-fit: contain;
+    filter: blur(5px);
 }
 
 
@@ -209,7 +368,7 @@ body{
 .manage__dropdown{
     width: 200px;
     height: auto;
-    position: absolute;
+    position: fixed;
     top: 5%;
     right:1px;
     z-index: 2005;
@@ -218,7 +377,8 @@ body{
 
 .manage__logo{
     border-radius: 50%;
-    padding: 7px;
+    width: 30px;
+    height: 30px;
     cursor:pointer;
     border-right: 1px solid #B4D9E4 ;
     border-left: 1px solid red;
@@ -233,16 +393,28 @@ body{
         transform: rotate(359deg);
     }
 }
-.manage__logo:hover{
-    background-color: #B4D9E4;
-    color: #26223B !important;
+.manage__logo__container{
+    transition: all 200ms ease-in;
+}
+.manage__logo__container:hover .setting__text{
+    display: block;
+}
+.setting__text{
+    position: fixed;
+    top:6%;
+    padding: 5px 7px;
+    width: auto;
+    color: #f99400;
+    background-color: rgba(0, 0, 0, 0.58) !important;
+    border-radius: 3px;
+    right: 7px;
+    display: none;
 }
 
 .manage__item{
-    height: 30px;
+    height: 50px;
     cursor: pointer;
     padding: 5px;
-    border-radius: 5px;
     font-size: 14px;
     transition: all 200ms ease-in-out;
 }
@@ -312,7 +484,38 @@ body{
 
 /* MANAGE STYLE */
 .manage__container{
+    position: fixed;
+    top: 5%;
     height: 100%;
+}
+
+.manage__sidebar{
+    border-top: 5px solid #71848a78;
+    border-top-right-radius: 10px;
+    overflow: scroll;
+/* width */
+}
+/* Custom Scroll BAR */
+.manage__sidebar::-webkit-scrollbar {
+    width:7px;
+}
+
+/* Track */
+.manage__sidebar::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+.manage__sidebar::-webkit-scrollbar-thumb {
+    background: #15ffd4;
+    border-radius: 10px;
+}
+
+/* Handle on hover */
+.manage__sidebar::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+    cursor: pointer;
 }
 
 .manage{
@@ -321,26 +524,24 @@ body{
 .each__itemContainer{
     position: relative;
     width: 100% !important;
-    height: 40px !important;
+    height: 50px !important;
     font-size: 16px;
     transition: all 200ms ease-in;
-    border-left:10px solid #26223B ;
+    border-left:5px solid #050D20 ;
     cursor: pointer;
 }
 .each__itemContainer:hover{
-    background-image: url("../../public/images/galaxy.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-    object-fit: contain;
-    border-left:10px solid red;
+    border-left:5px solid #15ffd4;
+    background-color:#134a53bc !important ;
+}
+.active__itemContainer{
+    border-left:5px solid #ff0000;
+    background-color:#93333abc !important ;
+}
+.each__itemContainer:hover div{
+    color: #15ffd4 !important;
 }
 
-.each__itemContainer a{
-    transition: all 200ms ease-in;
-}
-.each__itemContainer div:hover{
-    color: red !important;
-}
 
 /* MANAGE CURRENT STATUS */
 .current__page{
@@ -355,12 +556,12 @@ body{
 }
 .create__status{
     width: 100%;
-    height: 590px;
+    height: 570px;
     border-radius: 5px;
 }
 .list__status{
     width: 100%;
-    height: 850px;
+    height: 825px;
     border-radius: 5px;
 }
 .current__category{

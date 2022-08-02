@@ -2,7 +2,7 @@
 
 @section('manage')
 
-    <div class="py-2 d-flex flex-column justify-content-center align-items-center h-100">
+    <div class="py-2 d-flex flex-column justify-content-center align-items-center mt-2">
 
         {{-- CURRENT PAGE STATUS --}}
         <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-0">

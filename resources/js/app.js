@@ -24,6 +24,7 @@ require('./bootstrap');
     const updateName = document.getElementById('updateName');
     const editNameClose = document.getElementById('editNameClose');
 
+
 /*    const categoryCase = document.querySelectorAll('#categoryCase');
     const categoryChildContainer = document.querySelectorAll('#categoryChildContainer');*/
 
@@ -133,6 +134,10 @@ require('./bootstrap');
     }
     editName.addEventListener('click',() => { editNameStatus() });
     editNameClose.addEventListener('click',()=>{ editNameStatus() });
+
+
+  /*  ACTIVE SIDE BAR CONTAINER */
+
 
 /*CLICK YOUTUBE CATEGORY */
 
