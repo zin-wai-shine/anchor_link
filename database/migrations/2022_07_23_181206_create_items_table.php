@@ -18,7 +18,7 @@ class CreateItemsTable extends Migration
             $table->string('title');
             $table->foreignId('type_id');
             $table->longText('photo');
-            $table->enum('level',['0','1','2']);
+            $table->enum('level',['0','1','2','7']);
             $table->timestamps();
         });
     }

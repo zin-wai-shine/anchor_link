@@ -24,8 +24,9 @@ class UpdateCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            "title" => "required|min:5|unique:categories,title,".$this->route('category')->id,
-            "icon" => "required"
+            "title" => "required|min:3|unique:categories,title,".$this->route('category')->id,
+            "icon" => "required",
+            "column" => "required|in:1,2",
         ];
     }
 }

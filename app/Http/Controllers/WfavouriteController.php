@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class WfavouriteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * @param array $middleware
      */
@@ -26,16 +31,22 @@ class WfavouriteController extends Controller
     }
 
     public function store($id){
+        Gate::authorize('controller');
         $item = Web::all()->find($id);
         $favourite = new Wfavourite();
         $favourite->title = $item->title;
         $favourite->photo = $item->photo;
         $favourite->item_id = $item->id;
         $favourite->user_id = Auth::id();
-        $favourite->active = "1";
 
         $favourite->save();
 
         return redirect()->back();
+    }
+
+    public function destroy($id){
+        Gate::authorize('controller');
+        Wfavourite::all()->find($id)->delete();
+        return redirect()->back()->with('status','deleted web favourite is completely.');
     }
 }

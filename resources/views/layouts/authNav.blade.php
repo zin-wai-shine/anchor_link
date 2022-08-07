@@ -1,4 +1,4 @@
-<div class="nav__container bg-primary">
+<div class="nav__container bg-primary px-2">
 
         <div class="d-flex justify-content-between align-items-center w-100 h-100">
 
@@ -25,7 +25,7 @@
                            <i class="fa fa-star active__favourite text-center"></i>
                        </div>
                        <div class="hover__favourite__text text-nowrap">
-                           your favourite webpage links
+                            favourite webpage links
                        </div>
                    </a>
 
@@ -48,7 +48,7 @@
                             <i class="fa fa-star active__favourite text-center"></i>
                         </div>
                         <div class="hover__favourite__text text-nowrap">
-                            your favourite youtube links
+                             favourite youtube links
                         </div>
                     </a>
 
@@ -97,7 +97,7 @@
                                 }})"
                         >
                             <div class="profile__hover__text">
-                                Your Profile
+                                Profile
                             </div>
                         </div>
 
@@ -108,11 +108,6 @@
 
 
                 {{-- MANAGE DROPDOWN --}}
-
-{{--                        --}}{{--CREATE ITEMS DROPDOWN--}}{{--
-                            @include('layouts.drop.createItem')
-                        --}}{{--CREATE CATEGORY DROPDOWN--}}{{--
-                            @include('layouts.drop.createCategory')--}}
 
                         <div class="mx-3">
                             <div class=" position-relative manage__logo__container">
@@ -126,32 +121,35 @@
                         <div class="manage__dropdown  rainbow px-1 py-2 bg-primary animate__animated animate__fadeIn animate__faster display__action"
                             id="manageDropdown"
                         >
-                            <i class="fa fa-close text-light manage__close" id="manageClose"></i>
+                            <i class="fa fa-close text-light manage__close mb3" id="manageClose"></i>
 
-{{--                 CREATE CATEGORY
-                            <a href="" class="manage__item mt-4 text-decoration-none w-100
-                                    bg-light text-primary py-1 px-3 d-flex justify-content-between
-                                    align-items-center"
-                                 id="clickCreateCategory"
-                            >
-                                <span>Create Category</span>
-                                <i class="fa fa-plus-circle"></i>
-                            </a>
-                            ABOVE OF CREATE CATEGORY DROPDOWN--}}
+            {{-- Edit Profile --}}
+                    <div
+                        class="manage__item mb-1 mt-4 text-decoration-none w-100
+                                bg-primary text-light px-3 d-flex justify-content-between
+                                align-items-center"
+                       id="profileClickBtn"
+                    >
+                        <span>Edit Profile</span>
+                        <i class="fa fa-user"></i>
+                    </div>
 
                {{-- CREATE ITEMS --}}
-                            <a href="{{ route("manage") }}" target="_blank" class="manage__item mb-1 mt-4 text-decoration-none w-100
-                                    bg-light text-primary px-3 d-flex justify-content-between
-                                    align-items-center"
-                                 id="clickCreateItem"
-                            >
-                                <span>Manage</span>
-                                <i class="fa fa-plus-circle"></i>
-                            </a>
+                            @adminOrEditorOrViewer
+                                <a href="{{ route("manage") }}" target="_blank" class="manage__item mb-1 text-decoration-none w-100
+                                        bg-primary text-light px-3 d-flex justify-content-between
+                                        align-items-center"
+                                   id="clickCreateItem"
+                                >
+                                    <span>Manage</span>
+                                    <i class="fa fa-layers"></i>
+                                </a>
+                            @endadminOrEditorOrViewer
                             {{--ABOVE OF CREATE ITEMS DROPDOWN--}}
 
                 {{--LOGOUT--}}
-                            <a class="manage__item text-decoration-none w-100 bg-danger text-light px-3 d-flex justify-content-between align-items-center" href="{{ route('logout') }}"
+                            <a class="manage__item text-decoration-none w-100 bg-danger text-light px-3  d-flex justify-content-between align-items-center"
+                               href="{{ route('logout') }}"
                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                 <span class="">logout</span>

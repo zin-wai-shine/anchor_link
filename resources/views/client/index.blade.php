@@ -55,7 +55,9 @@
                         <th>#</th>
                         <th>Email</th>
                         <th>Client Name</th>
-                        <th>Management</th>
+                        @can('controller')
+                            <th>Management</th>
+                        @endcan
                         <th>Dates & Times</th>
                     </tr>
                     </thead>
@@ -66,14 +68,16 @@
                                <td>{{ $client->id }}</td>
                                <td>{{ $client->email }}</td>
                                <td>{{ $client->name }}</td>
-                               <td>
-                                   <a href="{{ route('client.edit',$client->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
-                                   <form action="{{ route('client.destroy',$client->id) }}" class="d-inline-block" method="post">
-                                       @csrf
-                                       @method('delete')
-                                       <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
-                                   </form>
-                               </td>
+                              @can('controller')
+                                   <td>
+                                       <a href="{{ route('client.edit',$client->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+                                       <form action="{{ route('client.destroy',$client->id) }}" class="d-inline-block" method="post">
+                                           @csrf
+                                           @method('delete')
+                                           <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
+                                       </form>
+                                   </td>
+                                  @endcan
                                <td>
                                    <div>
                                        {{ $client->created_at->format('d / m / Y') }}
@@ -90,8 +94,16 @@
                     </tbody>
                 </table>
 
-                <div>
-                    {{ $clients->onEachSide(1)->links() }}
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>{{ $clients->onEachSide(1)->links() }}</div>
+                    <div class="text-light h4">
+                        {{ \App\Models\Client::all()->count() }}
+                        @if(App\Models\Client::all()->count()>1)
+                            items
+                        @else
+                            item
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

@@ -57,7 +57,9 @@
                         <th>Logo</th>
                         <th>Typeof</th>
                         <th>Level</th>
-                        <th>Management</th>
+                        @can('controller')
+                            <th>Management</th>
+                        @endcan
                         <th>Dates:Times</th>
                     </tr>
                     </thead>
@@ -70,15 +72,17 @@
                             <td class="h4"><img class="item__logo__img" src="{{ asset('storage/youtube/'.$item->photo ) }}" alt=""></td>
                             <td>{{ $item->type->title }}</td>
                             <td>{{ $item->level }}</td>
-                            <td>
-                                <a href="{{ route('item.show',$item->id) }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
-                                <a href="{{ route('item.edit',$item->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
-                                <form action="{{ route('item.destroy',$item->id) }}" class="d-inline-block" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
-                                </form>
-                            </td>
+                            @can('controller')
+                                <td>
+                                    <a href="{{ route('item.show',$item->id) }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
+                                    <a href="{{ route('item.edit',$item->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('item.destroy',$item->id) }}" class="d-inline-block" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
+                                    </form>
+                                </td>
+                            @endcan
                             <td>
                                 <div>
                                     {{ $item->created_at->format('d / m / Y') }}

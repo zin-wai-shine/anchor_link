@@ -2,7 +2,7 @@
 
 @section('manage')
 
-    <div class=" d-flex flex-column justify-content-center align-items-center h-100">
+    <div class=" d-flex flex-column justify-content-center align-items-center mt-2">
 
         {{-- CURRENT PAGE STATUS --}}
         <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-2">
@@ -55,7 +55,9 @@
                         <th>#</th>
                         <th>Title</th>
                         <th>Category</th>
-                        <th>Management</th>
+                        @can('controller')
+                            <th>Management</th>
+                        @endcan
                         <th>Dates:Times</th>
                     </tr>
                     </thead>
@@ -66,14 +68,16 @@
                             <td>{{ $type->id }}</td>
                             <td>{{ $type->title }}</td>
                             <td>{{ $type->category->title }}</td>
-                            <td>
-                                <a href="{{ route('type.edit',$type->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
-                                <form action="{{ route('type.destroy',$type->id) }}" class="d-inline-block" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
-                                </form>
-                            </td>
+                            @can('controller')
+                                 <td>
+                                    <a href="{{ route('type.edit',$type->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('type.destroy',$type->id) }}" class="d-inline-block" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
+                                    </form>
+                                </td>
+                            @endcan
                             <td>
                                 <div>
                                     {{ $type->created_at->format('d / m / Y') }}
@@ -90,8 +94,15 @@
                     </tbody>
                 </table>
 
-                <div>
-                    {{ $types->onEachSide(1)->links() }}
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>{{ $types->onEachSide(1)->links() }}</div>
+                    <div class="text-light h4">( {{ \App\Models\Type::all()->count() }} )
+                        @if(App\Models\Type::all()->count()>1)
+                            items
+                        @else
+                            item
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

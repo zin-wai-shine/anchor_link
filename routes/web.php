@@ -18,24 +18,32 @@ Route::get('/welcome', function () {
 });
 
 Auth::routes();
-
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/manage',[\App\Http\Controllers\ManageController::class, 'index'])->name('manage');
-Route::resource('/category',\App\Http\Controllers\CategoryController::class);
-Route::resource('/item',\App\Http\Controllers\ItemController::class);
-Route::resource('/user',\App\Http\Controllers\UserController::class);
-Route::resource('/item',\App\Http\Controllers\ItemController::class);
-Route::resource('/client',\App\Http\Controllers\ClientController::class);
-Route::resource('/active',\App\Http\Controllers\ActiveController::class);
-Route::resource('/type',\App\Http\Controllers\TypeController::class);
-Route::resource('/web',\App\Http\Controllers\WebController::class);
 
-Route::get('/web-link/{link}',[\App\Http\Controllers\ShowlinkController::class,'web'])->name('webLink');
-Route::get('/youtube-link/{link}',[\App\Http\Controllers\ShowlinkController::class,'youtube'])->name('youtubeLink');
+Route::middleware(['auth','verified'])->group(function (){
+    Route::middleware('isAuthor')->group(function (){
+        Route::resource('/user',\App\Http\Controllers\UserController::class)->middleware('isAdmin');
+        Route::get('/manage',[\App\Http\Controllers\ManageController::class, 'index'])->name('manage');
+        Route::resource('/category',\App\Http\Controllers\CategoryController::class);
+        Route::resource('/item',\App\Http\Controllers\ItemController::class);
+        Route::resource('/item',\App\Http\Controllers\ItemController::class);
+        Route::resource('/client',\App\Http\Controllers\ClientController::class);
+        Route::resource('/active',\App\Http\Controllers\ActiveController::class);
+        Route::resource('/type',\App\Http\Controllers\TypeController::class);
+        Route::resource('/web',\App\Http\Controllers\WebController::class);
+    });
 
-Route::get('/youtube-items/favourite/{id}',[\App\Http\Controllers\FavouriteController::class,'store'])->name('favourite.store');
-Route::get('/youtube-favourite-items/favourite',[\App\Http\Controllers\FavouriteController::class,'index'])->name('favourite.index');
-Route::get('/youtube-favourite-items/favourite/{id}',[\App\Http\Controllers\FavouriteController::class,'destroy'])->name('favourite.destroy');
+    Route::put('/profile/{id}',[\App\Http\Controllers\ProfileController::class,'update'])->name('profile.update');
 
-Route::get('/wFavourite-items/favourite/{id}',[\App\Http\Controllers\WfavouriteController::class,'store'])->name('wFavourite.store');
-Route::get('/webs-favourite-items/favourite',[\App\Http\Controllers\WfavouriteController::class,'index'])->name('wFavourite.index');
+    Route::get('/web-link/{link}',[\App\Http\Controllers\ShowlinkController::class,'web'])->name('webLink');
+    Route::get('/youtube-link/{link}',[\App\Http\Controllers\ShowlinkController::class,'youtube'])->name('youtubeLink');
+
+    Route::get('/youtube-items/favourite/{id}',[\App\Http\Controllers\FavouriteController::class,'store'])->name('favourite.store');
+    Route::get('/youtube-favourite-items/favourite',[\App\Http\Controllers\FavouriteController::class,'index'])->name('favourite.index');
+    Route::get('/youtube-favourite-items/favourite/{id}',[\App\Http\Controllers\FavouriteController::class,'destroy'])->name('favourite.destroy');
+
+    Route::get('/wFavourite-items/favourite/{id}',[\App\Http\Controllers\WfavouriteController::class,'store'])->name('wFavourite.store');
+    Route::get('/webs-favourite-items/favourite',[\App\Http\Controllers\WfavouriteController::class,'index'])->name('wFavourite.index');
+    Route::get('/webs-favourite-items/favourite/{id}',[\App\Http\Controllers\WfavouriteController::class,'destroy'])->name('wFavourite.destroy');
+
+});

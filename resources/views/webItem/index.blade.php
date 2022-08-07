@@ -57,7 +57,9 @@
                         <th>Logo</th>
                         <th>Typeof</th>
                         <th>Level</th>
-                        <th>Management</th>
+                        @can('controller')
+                            <th>Management</th>
+                        @endcan
                         <th>Dates:Times</th>
                     </tr>
                     </thead>
@@ -70,15 +72,17 @@
                             <td class="h4"><img class="item__logo__img" src="{{ asset('storage/webs/'.$item->photo ) }}" alt=""></td>
                             <td>{{ $item->type->title }}</td>
                             <td>{{ $item->level }}</td>
-                            <td class="text-nowrap">
-                                <a href="{{ route('web.show',$item->id) }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
-                                <a href="{{ route('web.edit',$item->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
-                                <form action="{{ route('web.destroy',$item->id) }}" class="d-inline-block" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
-                                </form>
-                            </td>
+                            @can('controller')
+                                <td class="text-nowrap">
+                                    <a href="{{ route('web.show',$item->id) }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
+                                    <a href="{{ route('web.edit',$item->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('web.destroy',$item->id) }}" class="d-inline-block" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
+                                    </form>
+                                </td>
+                            @endcan
                             <td>
                                 <div>
                                     {{ $item->created_at->format('d / m / Y') }}
@@ -97,7 +101,14 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                     <div>{{ $items->onEachSide(1)->links() }}</div>
-                    <div class="text-light h4">{{ \App\Models\Web::all()->count() }}</div>
+                    <div class="text-light h4">
+                        {{ \App\Models\Web::all()->count() }}
+                        @if(App\Models\Web::all()->count()>1)
+                            items
+                        @else
+                            item
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

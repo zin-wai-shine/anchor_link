@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 
 class FavouriteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * @param array $middleware
      */
@@ -30,7 +35,6 @@ class FavouriteController extends Controller
         $favourite->photo = $item->photo;
         $favourite->item_id = $item->id;
         $favourite->user_id = Auth::id();
-        $favourite->active = "1";
 
         $favourite->save();
 
@@ -39,6 +43,6 @@ class FavouriteController extends Controller
 
     public function destroy($id){
         Favourite::all()->find($id)->delete();
-        return redirect()->back()->with('status','deleted favourite is completely.');
+        return redirect()->back()->with('status','deleted youtube favourite is completely.');
     }
 }

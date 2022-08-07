@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -14,6 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $users = User::when(request('keyword'),function($q){
             $keyword = request('keyword');
             $q->orWhere("name","like","%$keyword%")->
@@ -51,6 +59,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
+
         $user = User::all()->find($id);
         return view('user.show',compact('user'));
     }
@@ -63,6 +72,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+
         $user = User::all()->find($id);
         return view('user.edit',compact('user'));
     }
@@ -74,31 +84,15 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request ,$id)
     {
-        if($request->name || $request->photo){
-            $request->validate([
-                'name' => 'required|max:15',
-                'photo' => 'mimes:png,jpg,jpeg,svg'
-            ]);
-            $user = User::all()->find($id);
-            $user->name = $request->name;
-            if($request->hasFile('photo')){
-                $newFileName = uniqid()."_profile_logo.".$request->file('photo')->extension();
-                $request->file('photo')->storeAs('public/profiles',$newFileName);
-                $user->logo = $newFileName;
-            }
-            $user->update();
-
-            return redirect()->back()->with('status','updated profile is completely.');
-        }
 
         if($request->userName || $request->userPhoto || $request->role || $request->email){
             $request->validate([
                 'userName' => 'required|max:15',
                 'email'    => 'required|email',
                 'userPhoto' => 'mimes:png,jpg,jpeg,svg',
-                'role'      => 'required|in:0,1,2',
+                'role'      => 'required|in:0,1,2,3',
             ]);
             $user = User::all()->find($id);
             $user->name = $request->userName;

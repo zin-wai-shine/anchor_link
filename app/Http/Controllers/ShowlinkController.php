@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 
 class ShowlinkController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function web($link){
         return view('showLink.web',compact('link'));
     }

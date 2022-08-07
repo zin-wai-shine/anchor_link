@@ -13,6 +13,7 @@ require('./bootstrap');
     const manageClose = document.getElementById('manageClose');
 
     const profileClick = document.getElementById('profileClick');
+    const profileClickBtn = document.getElementById('profileClickBtn');
     const profileStatus = document.getElementById('profileStatus');
     const profileClose = document.getElementById('profileClose');
 
@@ -112,6 +113,7 @@ require('./bootstrap');
         }
     }
     profileClick.addEventListener('click',()=>{profileFun();});
+    profileClickBtn.addEventListener('click',()=>{profileFun();})
     profileClose.addEventListener('click',()=>{profileFun();});
 
 /* EDIT PROFILE */

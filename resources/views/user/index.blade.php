@@ -55,7 +55,9 @@
                         <th>Email <i class="fa fa-envelope"></i></th>
                         <th>Role <i class="fa fa-typo3"></i></th>
                         <th>Profile <i class="fa fa-image-portrait"></i></th>
-                        <th>Management <i class="fa fa-list-check"></i></th>
+                        @can('controller')
+                            <th>Management <i class="fa fa-list-check"></i></th>
+                        @endcan
                         <th>Dates:Times <i class="fa fa-clock"></i></th>
                     </tr>
                     </thead>
@@ -83,15 +85,17 @@
 
                             </td>
 
-                            <td>
-                                <a href="{{ route('user.show',$user->id)  }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
-                                <a href="{{ route('user.edit',$user->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
-                                <form action="{{ route('user.destroy',$user->id) }}" class="d-inline-block" method="post">
-                                    @csrf
-                                    @method('delete')
-                                    <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
-                                </form>
-                            </td>
+                            @can('controller')
+                                <td>
+                                    <a href="{{ route('user.show',$user->id)  }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
+                                    <a href="{{ route('user.edit',$user->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+                                    <form action="{{ route('user.destroy',$user->id) }}" class="d-inline-block" method="post">
+                                        @csrf
+                                        @method('delete')
+                                        <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
+                                    </form>
+                                </td>
+                            @endcan
 
                             <td>
                                 <div>
@@ -109,8 +113,15 @@
                     </tbody>
                 </table>
 
-                <div>
-                    {{ $users->onEachSide(1)->links() }}
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>{{ $users->onEachSide(1)->links() }}</div>
+                    <div class="text-light h4">( {{ \App\Models\User::all()->count() }} )
+                        @if(App\Models\User::all()->count()>1)
+                            items
+                        @else
+                            item
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

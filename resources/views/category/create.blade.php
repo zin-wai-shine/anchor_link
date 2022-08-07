@@ -45,18 +45,38 @@
                         </div>
 
                         <div class="my-3">
-                            <div class="d-flex align-items-center">
-                                <input
-                                    type="text"
-                                    name="icon"
-                                    value="{{ old('icon') }}"
-                                    class="form-control form-control-lg bg-primary border-light text-light @error('icon') is-invalid @enderror"
-                                    placeholder="text icon . . . . "
-                                >
+                            <div class="row">
+                                <div class="col-8">
+                                    <div class="d-flex align-items-center">
+                                        <input
+                                            type="text"
+                                            name="icon"
+                                            value="{{ old('icon') }}"
+                                            class="form-control form-control-lg bg-primary border-light text-light @error('icon') is-invalid @enderror"
+                                            placeholder="text icon . . . . "
+                                        >
+                                    </div>
+                                    @error('icon')
+                                    <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-4">
+                                    <div class="d-flex align-items-center">
+                                        <select
+                                            name="column"
+                                            id=""
+                                            class="form-control form-control-lg bg-primary text-light border-light @error('title') is-invalid @enderror"
+                                        >
+                                            <option value="" class="text-black-50">Select Column . . . . </option>
+                                            <option value="1" {{ old('column')== 1 ? "selected" : ''}}>First Column</option>
+                                            <option value="2" {{ old('column')== 2 ? "selected" : ''}}>Second Column</option>
+                                        </select>
+                                    </div>
+                                    @error('column')
+                                    <div class="text-danger h5 mt-2">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
-                            @error('icon')
-                            <div class="text-danger h5 mt-2">{{ $message }}</div>
-                            @enderror
                         </div>
                         <button class="btn btn-primary border-light btn-lg w-25 mt-5"><i class="fa fa-plus text-light fw-bold"></i></button>
                     </form>

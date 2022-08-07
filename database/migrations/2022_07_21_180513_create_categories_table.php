@@ -17,6 +17,7 @@ class CreateCategoriesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('icon');
+            $table->enum('column',['1','2']);
             $table->foreignId('user_id');
             $table->timestamps();
         });

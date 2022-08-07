@@ -81,6 +81,7 @@
                                             <option value="0" {{ old('role',$user->role)== "0" ? "selected" : ''}}>0</option>
                                             <option value="1" {{ old('role',$user->role)== "1" ? "selected" : ''}}>1</option>
                                             <option value="2" {{ old('role',$user->role)== "2" ? "selected" : ''}}>2</option>
+                                            <option value="3" {{ old('role',$user->role)== "3" ? "selected" : ''}}>3</option>
                                         </select>
                                     </div>
                                     @error('role')

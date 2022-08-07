@@ -56,7 +56,9 @@
                             <th>Title</th>
                             <th>Icon</th>
                             <th>User</th>
-                            <th>Management</th>
+                            @can('controller')
+                                <th>Management</th>
+                            @endcan
                             <th>Dates:Times</th>
                         </tr>
                     </thead>
@@ -68,15 +70,17 @@
                                 <td>{{ $category->title }}</td>
                                 <td class="h4"><i class="text-light fa {{ $category->icon }}"></i></td>
                                 <td>{{ $category->user->name }}</td>
-                                <td>
-                                    <a href="" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
-                                    <a href="{{ route('category.edit',$category->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
-                                    <form action="{{ route('category.destroy',$category->id) }}" class="d-inline-block" method="post">
-                                        @csrf
-                                        @method('delete')
-                                        <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
-                                    </form>
-                                </td>
+                                @can('controller')
+                                    <td>
+                                        <a href="" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
+                                        <a href="{{ route('category.edit',$category->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+                                        <form action="{{ route('category.destroy',$category->id) }}" class="d-inline-block" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
+                                        </form>
+                                    </td>
+                                @endcan
                                 <td>
                                     <div>
                                         {{ $category->created_at->format('d / m / Y') }}
@@ -93,8 +97,15 @@
                     </tbody>
                 </table>
 
-                <div>
-                    {{ $categories->onEachSide(1)->links() }}
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>{{ $categories->onEachSide(1)->links() }}</div>
+                    <div class="text-light h4">( {{ \App\Models\Category::all()->count() }} )
+                        @if(App\Models\Category::all()->count()>1)
+                            items
+                        @else
+                            item
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

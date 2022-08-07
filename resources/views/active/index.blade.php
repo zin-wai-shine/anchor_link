@@ -22,7 +22,8 @@
                 </div>
 
                 {{-- CREATER SIDE --}}
-                <div class="col-4 d-flex flex-column justify-content-center h-100 ">
+                @adminOrEditor
+                    <div class="col-4 d-flex flex-column justify-content-center h-100 ">
                     <form action="{{ route('active.store')  }}" method="post">
                         @csrf
                         <div class="w-100 my-5">
@@ -58,9 +59,10 @@
                         <button class="btn btn-outline-light  w-25 mt-5"><i class="fa fa-plus"></i></button>
                     </form>
                 </div>
+                @endadminOrEditor
 
                 {{-- TRANSLATE SIDE --}}
-                <div class="col-8 text-light h-100 d-flex flex-column justify-content-center">
+                <div class="@if(\Illuminate\Support\Facades\Auth::user()->role == 2) col-12 @endif col-8 text-light h-100 d-flex flex-column justify-content-center">
                     <div class="list__status bg-primary ">
                         <div class="w-100 mt-5">
 
@@ -102,7 +104,9 @@
                                     <th>#</th>
                                     <th>Email</th>
                                     <th>Client Name</th>
-                                    <th>Management</th>
+                                    @can('controller')
+                                        <th>Management</th>
+                                    @endcan
                                     <th>Dates & Times</th>
                                 </tr>
                                 </thead>
@@ -113,14 +117,16 @@
                                         <td>{{ $active->id }}</td>
                                         <td>{{ $active->email }}</td>
                                         <td>{{ $active->name }}</td>
-                                        <td>
-                                            <a href="{{ route('active.edit',$active->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
-                                            <form action="{{ route('active.destroy',$active->id) }}" class="d-inline-block" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
-                                            </form>
-                                        </td>
+                                        @can('controller')
+                                            <td>
+                                                <a href="{{ route('active.edit',$active->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
+                                                <form action="{{ route('active.destroy',$active->id) }}" class="d-inline-block" method="post">
+                                                    @csrf
+                                                    @method('delete')
+                                                    <button class="btn btn-outline-danger"><i class="fa fa-trash-can"></i></button>
+                                                </form>
+                                            </td>
+                                        @endcan
                                         <td>
                                             <div>
                                                 {{ $active->created_at->format('d / m / Y') }}
@@ -138,7 +144,18 @@
                             </table>
 
                             <div>
-                                {{ $actives->onEachSide(1)->links() }}
+
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>{{ $actives->onEachSide(1)->links() }}</div>
+                                <div class="text-light h4">
+                                    {{ \App\Models\Active::all()->count() }}
+                                    @if(App\Models\Active::all()->count()>1)
+                                        items
+                                    @else
+                                        item
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

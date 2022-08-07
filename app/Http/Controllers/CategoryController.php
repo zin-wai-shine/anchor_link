@@ -6,10 +6,16 @@ use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,6 +51,7 @@ class CategoryController extends Controller
         $category = new Category();
         $category->title = ucfirst($request->title);
         $category->icon = $request->icon;
+        $category->column = $request->column;
         $category->user_id = Auth::id();
         $category->save();
 
@@ -70,6 +77,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
+        Gate::authorize('controller');
         return view('category.edit',compact('category'));
     }
 
@@ -82,8 +90,10 @@ class CategoryController extends Controller
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
+        Gate::authorize('controller');
         $category->title = ucfirst($request->title);
         $category->icon  = $request->icon;
+        $category->column = $request->column;
         $category->update();
 
         return redirect()->route('category.index')->with('status','category is updated.');
@@ -97,6 +107,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        Gate::authorize('controller');
         $category->delete();
         return redirect()->back()->with('status','category is deleted.');
     }

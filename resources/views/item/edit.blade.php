@@ -61,6 +61,7 @@
                                             <option value="0" {{ old('level',$item->level)== "0" ? "selected" : ''}}>Elementary</option>
                                             <option value="1" {{ old('level',$item->level)== "1" ? "selected" : ''}}>Intermediate</option>
                                             <option value="2" {{ old('level',$item->level)== "2" ? "selected" : ''}}>Advanced</option>
+                                            <option value="7" {{ old('level',$item->level)== "7" ? "selected" : ''}}>Other</option>
                                         </select>
                                     </div>
                                     @error('level')

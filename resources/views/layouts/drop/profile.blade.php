@@ -1,5 +1,5 @@
 <div
-    class="edit__profile__container bg-primary p-2 animate__animated animate__fadeIn animate__faster backImg display__action"
+    class="edit__profile__container bg-primary p-2 animate__animated animate__fadeIn animate__faster display__action"
     id="profileStatus"
 >
 
@@ -8,7 +8,12 @@
 
        {{-- FIRST ROLE FOR ( Manage FILE ) --}}
         <div class="mb-5 position-relative profile__first__case d-flex justify-content-center w-100 ">
-            <form class="w-100 flex-column align-items-center d-flex justify-content-center"  id="saveForm" action="{{ route("user.update",\Illuminate\Support\Facades\Auth::user()->id) }}" method="post" enctype="multipart/form-data">
+            <form class="w-100 flex-column align-items-center d-flex justify-content-center"
+                  id="saveForm"
+                  action="{{ route("profile.update",\Illuminate\Support\Facades\Auth::user()->id) }}"
+                  method="post"
+                  enctype="multipart/form-data"
+            >
                 @csrf
                 @method('put')
 
