@@ -20,14 +20,16 @@
             {{--WEB PAGE ACTION--}}
                <div class="d-flex align-items-center">
 
-                   <a href="{{ route('wFavourite.index') }}" class="favourite__star__logo">
-                       <div class="start__logo__container d-flex justify-content-center align-items-center">
-                           <i class="fa fa-star active__favourite text-center"></i>
-                       </div>
-                       <div class="hover__favourite__text text-nowrap">
-                            favourite webpage links
-                       </div>
-                   </a>
+                   <div class="star__container">
+                       <a href="{{ route('wFavourite.index') }}" class="favourite__star__logo">
+                           <div class="start__logo__container d-flex justify-content-center align-items-center">
+                               <i class="fa fa-star active__favourite text-center"></i>
+                           </div>
+                           <div class="hover__favourite__text text-nowrap">
+                               favourite by webpage links
+                           </div>
+                       </a>
+                   </div>
 
                    <div class="mx-3"></div>
 
@@ -42,15 +44,16 @@
 
             {{--YOUTUBE PAGE ACTION--}}
                 <div class="d-flex align-items-center">
-
-                    <a href="{{ route('favourite.index') }}" class=" favourite__star__logo">
-                        <div class="start__logo__container d-flex justify-content-center align-items-center">
-                            <i class="fa fa-star active__favourite text-center"></i>
-                        </div>
-                        <div class="hover__favourite__text text-nowrap">
-                             favourite youtube links
-                        </div>
-                    </a>
+                    <div class="star__container">
+                        <a href="{{ route('favourite.index') }}" class=" favourite__star__logo">
+                            <div class="start__logo__container d-flex justify-content-center align-items-center">
+                                <i class="fa fa-star active__favourite text-center"></i>
+                            </div>
+                            <div class="hover__favourite__text text-nowrap">
+                                favourite by youtube links
+                            </div>
+                        </a>
+                    </div>
 
                     <div class="mx-3"></div>
 
@@ -111,8 +114,8 @@
 
                         <div class="mx-3">
                             <div class=" position-relative manage__logo__container">
-                                   <div class="manage__logo d-flex justify-content-center align-items-center">
-                                       <i class="fa fa-gear text-light w-100 text-center" id="manageLogo"></i>
+                                   <div class="manage__logo ">
+                                           <i class="fa fa-gear text-light " id="manageLogo"></i>
                                    </div>
                                  <div class="setting__text">Setting</div>
                             </div>
@@ -142,7 +145,7 @@
                                    id="clickCreateItem"
                                 >
                                     <span>Manage</span>
-                                    <i class="fa fa-layers"></i>
+                                    <i class="fa fa-gears text-light"></i>
                                 </a>
                             @endadminOrEditorOrViewer
                             {{--ABOVE OF CREATE ITEMS DROPDOWN--}}

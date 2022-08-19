@@ -5,13 +5,8 @@
     <div class=" d-flex flex-column justify-content-center align-items-center mt-2">
 
         {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-2">
-            <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <a href="{{ route("category.create") }}" class="text-light text-decoration-none">Create Category <i class="fa fa-plus"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <div  class="text-secondary text-decoration-none">Category List<i class="fa fa-list-squares"></i></div>
-        </div>
+        <x-breadCrumb :route="route('category.create')" addName="Create Category" arriveName="Category List"/>
+
 
         {{-- CREATE STATUS --}}
         <div class="list__status bg-primary p-3">
@@ -72,7 +67,7 @@
                                 <td>{{ $category->user->name }}</td>
                                 @can('controller')
                                     <td>
-                                        <a href="" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
+                                        <a href="" class="btn btn-outline-light"><i class="fa fa-eye"></i></a>
                                         <a href="{{ route('category.edit',$category->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
                                         <form action="{{ route('category.destroy',$category->id) }}" class="d-inline-block" method="post">
                                             @csrf
@@ -100,7 +95,7 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>{{ $categories->onEachSide(1)->links() }}</div>
                     <div class="text-light h4">( {{ \App\Models\Category::all()->count() }} )
-                        @if(App\Models\Category::all()->count()>1)
+                        @if($shareCategory->count()>1)
                             items
                         @else
                             item

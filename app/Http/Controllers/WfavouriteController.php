@@ -31,7 +31,6 @@ class WfavouriteController extends Controller
     }
 
     public function store($id){
-        Gate::authorize('controller');
         $item = Web::all()->find($id);
         $favourite = new Wfavourite();
         $favourite->title = $item->title;
@@ -40,12 +39,10 @@ class WfavouriteController extends Controller
         $favourite->user_id = Auth::id();
 
         $favourite->save();
-
         return redirect()->back();
     }
 
     public function destroy($id){
-        Gate::authorize('controller');
         Wfavourite::all()->find($id)->delete();
         return redirect()->back()->with('status','deleted web favourite is completely.');
     }

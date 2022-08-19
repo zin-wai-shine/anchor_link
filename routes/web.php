@@ -17,10 +17,10 @@ Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Auth::routes();
-Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Auth::routes(['verify' => true]);
 Route::middleware(['auth','verified'])->group(function (){
+    Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::middleware('isAuthor')->group(function (){
         Route::resource('/user',\App\Http\Controllers\UserController::class)->middleware('isAdmin');
         Route::get('/manage',[\App\Http\Controllers\ManageController::class, 'index'])->name('manage');
@@ -35,8 +35,8 @@ Route::middleware(['auth','verified'])->group(function (){
 
     Route::put('/profile/{id}',[\App\Http\Controllers\ProfileController::class,'update'])->name('profile.update');
 
-    Route::get('/web-link/{link}',[\App\Http\Controllers\ShowlinkController::class,'web'])->name('webLink');
-    Route::get('/youtube-link/{link}',[\App\Http\Controllers\ShowlinkController::class,'youtube'])->name('youtubeLink');
+    Route::get('/web-link/{slug}',[\App\Http\Controllers\ShowlinkController::class,'web'])->name('webLink');
+    Route::get('/youtube-link/{slug}',[\App\Http\Controllers\ShowlinkController::class,'youtube'])->name('youtubeLink');
 
     Route::get('/youtube-items/favourite/{id}',[\App\Http\Controllers\FavouriteController::class,'store'])->name('favourite.store');
     Route::get('/youtube-favourite-items/favourite',[\App\Http\Controllers\FavouriteController::class,'index'])->name('favourite.index');

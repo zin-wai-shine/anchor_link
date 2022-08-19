@@ -16,6 +16,7 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('slug');
             $table->foreignId('type_id');
             $table->longText('photo');
             $table->enum('level',['0','1','2','7']);

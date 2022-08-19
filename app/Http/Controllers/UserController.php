@@ -20,13 +20,10 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+        /* search() mean we are using (local scope) you can see in the model "scopeSearch function" */
     {
 
-        $users = User::when(request('keyword'),function($q){
-            $keyword = request('keyword');
-            $q->orWhere("name","like","%$keyword%")->
-                orWhere("email","like","%$keyword%");
-        })->latest('id')->paginate('7')->withQueryString();
+        $users = User::search()->latest('id')->paginate('7')->withQueryString();
         return view('user.index',compact('users'));
     }
 

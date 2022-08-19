@@ -5,13 +5,7 @@
     <div class=" d-flex flex-column justify-content-center align-items-center mt-2">
 
         {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-2">
-            <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <a href="{{ route('client.index') }}" class="text-light text-decoration-none">Emails List <i class="fa fa-plus"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <div  class="text-secondary text-decoration-none">Add Client Email <i class="fa fa-list-squares"></i></div>
-        </div>
+        <x-breadCrumb :route="route('client.index')" addName="Emails List" arriveName="Edit Client Email "/>
 
         {{-- CREATE STATUS --}}
         <div class="list__status bg-primary p-3 position-relative">

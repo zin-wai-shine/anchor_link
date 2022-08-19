@@ -10,18 +10,9 @@ use Illuminate\Support\Facades\Auth;
 
 class FavouriteController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    public function __construct(){  $this->middleware('auth');  }
 
-    /**
-     * @param array $middleware
-     */
-    public function setMiddleware(array $middleware): void
-    {
-        $this->middleware = $middleware;
-    }
+    public function setMiddleware(array $middleware): void{$this->middleware = $middleware;}
 
     public function index(){
         $favourites = Favourite::all();
@@ -37,7 +28,6 @@ class FavouriteController extends Controller
         $favourite->user_id = Auth::id();
 
         $favourite->save();
-
         return redirect()->back();
     }
 

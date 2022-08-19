@@ -59,11 +59,16 @@ body{
 
 
 .select__category{
+    padding: 0 30px;
     cursor: pointer;
     transition: all 200ms ease-in;
 }
+.select__category:hover{
+    box-shadow: -10px 20px 20px -10px #00FF94;
+}
 .select__category:hover .nav__link{
     color:#15ffd4 !important;
+    /*box-shadow: -10px 25px 20px -10px #00FF94;*/
 }
 
 .profile__status{
@@ -71,20 +76,29 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     object-fit: contain;
+    border:2px solid #15ffd4;
+    transition: all 200ms ease-in-out;
 
+}
+.profile__status:hover{
+    box-shadow: 0 0 3px #00FF94;
+    box-shadow: 0 0 6px #00FF94;
+    box-shadow: 0 0 12px #00FF94;
+    box-shadow: 0 0 18px #00FF94;
 }
 .profile__status:hover .profile__hover__text{
     display: block;
+
 }
 .profile__hover__text{
-    position: fixed;
+    position: absolute;
+    bottom: -40px;
+    left: -10px;
     padding: 5px;
     width: auto;
     color: #f99400;
     background-color: rgba(0, 0, 0, 0.58) !important;
     border-radius: 3px;
-    top: 5%;
-    right:50px;
     display: none;
 }
 .edit__profile__logoContainer{
@@ -122,6 +136,13 @@ body{
     position: absolute;
     bottom: 20px;
     right: 20px;
+    transition: all 200ms ease-in-out;
+}
+.save__editProfile:hover{
+    box-shadow: 0 0 3px #00FF94;
+    box-shadow: 0 0 6px #00FF94;
+    box-shadow: 0 0 12px #00FF94;
+    box-shadow: 0 0 18px #00FF94;
 }
 
 .edit__profile__logo{
@@ -153,7 +174,16 @@ body{
 .show__profile_logo{
     width: 200px;
     height: 200px;
-   /* border: 5px solid #B4D9E4;  !*dashed mean ---------- *!*/
+    border: 3px solid #15ffd4;  /*dashed mean ---------- */
+    transition: all 200ms ease-in-out;
+}
+.show__profile_logo:hover{
+    box-shadow: 0 0 3px #00FF94;
+    box-shadow: 0 0 6px #00FF94;
+    box-shadow: 0 0 12px #00FF94;
+    box-shadow: 0 0 18px #00FF94;
+    box-shadow: 0 0 24px #00FF94;
+    box-shadow: 0 0 30px #00FF94;
 }
 
 .edit__profile__container{
@@ -168,6 +198,15 @@ body{
     left:0;
     margin: 0 auto;
     z-index: 1008;
+    transition: all 200ms ease-in-out;
+}
+.edit__profile__container:hover{
+    box-shadow: 0 0 3px #00FF94;
+    box-shadow: 0 0 6px #00FF94;
+    box-shadow: 0 0 12px #00FF94;
+    box-shadow: 0 0 18px #00FF94;
+    box-shadow: 0 0 24px #00FF94;
+    box-shadow: 0 0 30px #00FF94;
 }
 .home__container {
     background-image: url("../../public/images/home.jpg");
@@ -199,6 +238,22 @@ body{
     z-index: 1015 !important;
     position: fixed;
     top: 0;
+}
+
+.home__page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    transition: all 200ms ease-in-out;
+}
+.home__page:hover{
+    box-shadow: 0 0 3px #00FF94;
+    box-shadow: 0 0 6px #00FF94;
+    box-shadow: 0 0 12px #00FF94;
+    box-shadow: 0 0 18px #00FF94;
 }
 
 .home__logo__container{
@@ -265,8 +320,8 @@ body{
     top:5%;
     left: 30%;
     z-index: 1001;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius:3px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius:5px;
     border-top: 5px solid #71848a78;
 
 }
@@ -278,24 +333,35 @@ body{
     object-fit: contain;
     filter: blur(5px);
 }
-
-
+.hover__item__image{
+    border-radius: 5px;
+    transition: all 200ms ease-in-out;
+}
+.hover__item__image:hover{
+    box-shadow: 0 0 3px #00FF94;
+    box-shadow: 0 0 6px #00FF94;
+    box-shadow: 0 0 12px #00FF94;
+    box-shadow: 0 0 18px #00FF94;
+}
 
 .item__image{
-    height:60px;
+    height:57px;
+    border-radius: 5px;
+}
+.item__image:hover{
+
 }
 .w__item__image{
-    height:45px;
+    height:55px;
 }
 .show__item__image{
     border-radius: 5px;
-    border: 4px solid #71848a78;
-    transition: all 200ms ease-in;
+    border: 2px solid #181818;
+    transition: all 200ms ease-in !important;
     z-index: 1017;
 }
 .show__item__image:hover{
-    border: 4px solid #62E3FF;
-    transform: scale(1.1);
+    border: 2px solid #00FF94;
 }
 .show__item__image:hover i{
     display: block;
@@ -312,6 +378,22 @@ body{
 .bg__star{
     background-color:black;
 }
+.star__container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    transition: all 200ms ease-in-out;
+}
+.star__container:hover{
+    box-shadow: 0 0 3px #FFD600;
+    box-shadow: 0 0 6px #FFD600;
+    box-shadow: 0 0 12px #FFD600;
+    box-shadow: 0 0 18px #FFD600;
+}
+
 .star__logo{
     position: absolute;
     padding: 2px;
@@ -345,8 +427,9 @@ body{
 }
 
 .hover__favourite__text{
-    position: fixed;
-    top: 5%;
+    position: absolute;
+    bottom: -45px;
+    left: -95px;
     width:auto;
     height: 30px;
     padding: 5px;
@@ -391,8 +474,8 @@ body{
     top:5%;
     right:20%;
     z-index: 1001;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius:3px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius:5px;
     border-top: 5px solid #71848a78;
 }
 
@@ -437,21 +520,33 @@ body{
 }
 
 .manage__logo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 50%;
     width: 30px;
     height: 30px;
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
     cursor:pointer;
-    border-right: 1px solid #B4D9E4 ;
-    border-left: 1px solid red;
+    /*border-right: 1px solid #B4D9E4 ;
+    border-left: 1px solid red;*/
     transition: all 200ms ease-in-out;
     animation: rotation 10s infinite linear;
+}
+.manage__logo:hover{
+    box-shadow: 0 0 3px #00FF94;
+    box-shadow: 0 0 6px #00FF94;
+    box-shadow: 0 0 12px #00FF94;
+    box-shadow: 0 0 18px #00FF94;
 }
 @keyframes rotation {
     from {
         transform: rotate(0deg);
     }
     to {
-        transform: rotate(359deg);
+        transform: rotate(360deg);
     }
 }
 .manage__logo__container{
@@ -551,14 +646,13 @@ body{
 }
 
 .manage__sidebar{
-    border-top: 5px solid #71848a78;
     border-top-right-radius: 10px;
     overflow: scroll;
 /* width */
 }
 /* Custom Scroll BAR */
 .manage__sidebar::-webkit-scrollbar {
-    width:7px;
+    width:3px;
 }
 
 /* Track */
@@ -635,6 +729,7 @@ body{
 }
 .back__page{
     position: absolute;
+    border: 2px solid rgba(255, 0, 0, 0.515);
     height: 50px;
     width: 50px;
     border-radius: 50%;

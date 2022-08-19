@@ -5,14 +5,7 @@
     <div class=" d-flex flex-column justify-content-center align-items-center mt-2">
 
         {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-2">
-            <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <a href="{{ route('item.index') }}" class="text-light text-decoration-none">Item List <i class="fa fa-plus"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <div  class="text-secondary text-decoration-none">Create Item  <i class="fa fa-list-squares"></i></div>
-        </div>
-
+        <x-breadCrumb :route="route('item.index')" addName="Item List" arriveName="Create Item"/>
         {{-- CREATE STATUS --}}
         <div class="list__status bg-primary p-3">
             <div class="row h-100  p-5">
@@ -36,7 +29,7 @@
                                                 class="form-control form-control-lg bg-primary text-light border-light @error('type') is-invalid @enderror"
                                             >
                                                 <option value="" class="text-black-50">Select Category . . . . </option>
-                                                @foreach(\App\Models\Type::all() as $data)
+                                                @foreach($shareType as $data)
                                                     <option value="{{ $data->id }}" {{ old('type')==$data->id ? "selected" : ''}}>{{ $data->title }}</option>
                                                 @endforeach
 

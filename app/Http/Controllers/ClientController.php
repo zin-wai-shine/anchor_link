@@ -21,13 +21,9 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+        /* search() mean we are using (local scope) you can see in the model "scopeSearch function" */
     {
-        $clients = Client::when(request('keyword'),function($q){
-            $keyword = request('keyword');
-            $q->orWhere("email","like","%$keyword%")
-                ->orWhere("name","like","%$keyword%");
-        })->
-        latest('id')->paginate('6')->withQueryString();
+        $clients = Client::search()->latest('id')->paginate('6')->withQueryString();
         return view('client.index', compact('clients'));
     }
 
@@ -36,10 +32,7 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('client.create');
-    }
+    public function create(){   return view('client.create');   }
 
     /**
      * Store a newly created resource in storage.
@@ -57,27 +50,11 @@ class ClientController extends Controller
         return redirect()->back()->with('status', 'add client email and name is completely.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Client $client)
-    {
 
-    }
+    public function show(Client $client){}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Client $client)
-    {
-        return view('client.edit',compact('client'));
-    }
+
+    public function edit(Client $client){   return view('client.edit',compact('client'));   }
 
     /**
      * Update the specified resource in storage.

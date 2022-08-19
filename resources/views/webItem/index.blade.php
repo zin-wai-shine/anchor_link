@@ -5,13 +5,7 @@
     <div class=" d-flex flex-column justify-content-center align-items-center mt-2">
 
         {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-2">
-            <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <a href="{{ route("web.create") }}" class="text-light text-decoration-none">Create Web Item <i class="fa fa-plus"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <div  class="text-secondary text-decoration-none">Web Item List<i class="fa fa-list-squares"></i></div>
-        </div>
+        <x-breadCrumb :route="route('web.create')" addName="Create Web Item " arriveName="Web Item List"/>
 
         {{-- CREATE STATUS --}}
         <div class="list__status bg-primary p-3">
@@ -74,7 +68,7 @@
                             <td>{{ $item->level }}</td>
                             @can('controller')
                                 <td class="text-nowrap">
-                                    <a href="{{ route('web.show',$item->id) }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
+                                    <a href="{{ route('web.show',$item->id) }}" class="btn btn-outline-light"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('web.edit',$item->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
                                     <form action="{{ route('web.destroy',$item->id) }}" class="d-inline-block" method="post">
                                         @csrf
@@ -102,8 +96,8 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>{{ $items->onEachSide(1)->links() }}</div>
                     <div class="text-light h4">
-                        {{ \App\Models\Web::all()->count() }}
-                        @if(App\Models\Web::all()->count()>1)
+                        {{ $shareWebs->count() }}
+                        @if($shareWebs->count()>1)
                             items
                         @else
                             item

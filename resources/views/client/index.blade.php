@@ -5,13 +5,7 @@
     <div class=" d-flex flex-column justify-content-center align-items-center mt-2">
 
         {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-2">
-            <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <a href="{{ route("client.create") }}" class="text-light text-decoration-none"> Add Client Email <i class="fa fa-plus"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <div  class="text-secondary text-decoration-none">Client Email List <i class="fa fa-envelope-open"></i></div>
-        </div>
+        <x-breadCrumb :route="route('client.create')" addName="Emails List" arriveName="Client Email List "/>
 
         {{-- CREATE STATUS --}}
         <div class="list__status bg-primary p-3">
@@ -97,8 +91,8 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <div>{{ $clients->onEachSide(1)->links() }}</div>
                     <div class="text-light h4">
-                        {{ \App\Models\Client::all()->count() }}
-                        @if(App\Models\Client::all()->count()>1)
+                        {{ $shareClients->count() }}
+                        @if($shareClients->count()>1)
                             items
                         @else
                             item

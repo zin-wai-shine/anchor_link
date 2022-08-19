@@ -12,7 +12,7 @@
                     @forelse($favourites as $favourite)
                             @if(\Illuminate\Support\Facades\Auth::id() == $favourite->user_id)
                                    @if(strlen($favourite) != 0)
-                                        <div class="show__item__image p-0 shadow  m-1 position-relative">
+                                        <div class="show__item__image p-0 shadow  m-1 position-relative animate__animated animate__bounceIn">
                                             <a href="{{ route('favourite.destroy',$favourite->id) }}">
                                                 <i class="fa fa-window-close text-danger star__logo">
                                                     <div class="add__favourite text-nowrap px-2 py-1">
@@ -22,7 +22,7 @@
                                             </a>
 
                                             <a href="{{ $favourite->title }}" target="_blank">
-                                                <img src="{{ asset('storage/youtube/'.$favourite->photo) }}" class="" alt="" height="45">
+                                                <img src="{{ asset('storage/youtube/'.$favourite->photo) }}" class="" alt="" height="50">
                                             </a>
                                         </div>
                                     @else

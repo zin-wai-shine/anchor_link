@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreWebRequest;
 use App\Http\Requests\UpdateWebRequest;
 use App\Models\Web;
+use Illuminate\Support\Str;
 
 class WebController extends Controller
 {
@@ -19,11 +20,9 @@ class WebController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+       /* search() mean we are using (local scope) you can see in the model "scopeSearch function" */
     {
-        $items = Web::when(request('keyword'),function($q){
-            $keyword = request('keyword');
-            $q->orWhere("title","like","%$keyword%");
-        })->with('type')->latest('id')->paginate('7')->withQueryString();
+        $items = Web::search()->with('type')->latest('id')->paginate('7')->withQueryString();
         return view('webItem.index',compact('items'));
     }
 
@@ -47,12 +46,14 @@ class WebController extends Controller
     {
         $web = new Web();
         $web->title = $request->title;
+        $web->slug = Str::slug($request->title);
         $web->type_id = $request->type;
         if($request->hasFile('photo')){
             $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
             $request->file('photo')->storeAs('public/webs',$fileNewName);
             $web->photo = $fileNewName;
         }
+        $web->level = $request->level;
         $web->save();
 
         return redirect()->back()->with('status','anchor web item is created.');
@@ -91,6 +92,7 @@ class WebController extends Controller
     {
         $web->title = $request->title;
         $web->type_id = $request->type;
+        $web->level = $request->level;
         if($request->hasFile('photo')){
             $fileNewName = uniqid()."_anchor_image.".$request->file('photo')->extension();
             $request->file('photo')->storeAs('public/webs',$fileNewName);

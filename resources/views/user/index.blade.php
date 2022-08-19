@@ -5,11 +5,7 @@
     <div class=" d-flex flex-column justify-content-center align-items-center mt-2">
 
         {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-2">
-            <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <div  class="text-secondary text-decoration-none">User List <i class="fa fa-users"></i></div>
-        </div>
+        <x-breadCrumb route=" " addName="" arriveName="Edit User"/>
 
         {{-- CREATE STATUS --}}
         <div class="list__status bg-primary p-3">
@@ -58,6 +54,7 @@
                         @can('controller')
                             <th>Management <i class="fa fa-list-check"></i></th>
                         @endcan
+                        <th>Email Verified Date</th>
                         <th>Dates:Times <i class="fa fa-clock"></i></th>
                     </tr>
                     </thead>
@@ -87,7 +84,7 @@
 
                             @can('controller')
                                 <td>
-                                    <a href="{{ route('user.show',$user->id)  }}" class="btn btn-outline-light"><i class="fa fa-info-circle"></i></a>
+                                    <a href="{{ route('user.show',$user->id)  }}" class="btn btn-outline-light"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('user.edit',$user->id) }}" class="btn btn-outline-success"><i class="fa fa-edit"></i></a>
                                     <form action="{{ route('user.destroy',$user->id) }}" class="d-inline-block" method="post">
                                         @csrf
@@ -97,6 +94,17 @@
                                 </td>
                             @endcan
 
+                            <td>
+                                <div>
+                                    @if($user->email_verified_at)
+                                        {{ $user->email_verified_at->format('d / m / Y') }}
+                                        <br>
+                                        {{ $user->email_verified_at->format('h : i : s A') }}
+                                        @else
+                                            null
+                                        @endif
+                                </div>
+                            </td>
                             <td>
                                 <div>
                                     {{ $user->created_at->format('d / m / Y') }}
@@ -115,8 +123,8 @@
 
                 <div class="d-flex justify-content-between align-items-center">
                     <div>{{ $users->onEachSide(1)->links() }}</div>
-                    <div class="text-light h4">( {{ \App\Models\User::all()->count() }} )
-                        @if(App\Models\User::all()->count()>1)
+                    <div class="text-light h4">( {{ $shareUsers->count() }} )
+                        @if($shareUsers->count()>1)
                             items
                         @else
                             item

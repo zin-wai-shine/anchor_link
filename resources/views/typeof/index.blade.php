@@ -5,13 +5,7 @@
     <div class=" d-flex flex-column justify-content-center align-items-center mt-2">
 
         {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-2">
-            <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <a href="{{ route("type.create") }}" class="text-light text-decoration-none">Add Typeof <i class="fa fa-plus"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <div  class="text-secondary text-decoration-none">Typeof List<i class="fa fa-list-squares"></i></div>
-        </div>
+        <x-breadCrumb :route="route('type.create')" addName="Add Typeof" arriveName="Typeof List"/>
 
         {{-- CREATE STATUS --}}
         <div class="list__status bg-primary p-3">

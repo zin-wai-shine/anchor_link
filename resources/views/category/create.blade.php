@@ -4,14 +4,9 @@
 
     <div class=" d-flex flex-column justify-content-center align-items-center mt-2">
 
+
        {{-- CURRENT PAGE STATUS --}}
-        <div class="current__page bg-primary px-3 d-flex align-items-center h6 mb-0">
-            <a href="{{ route('home') }}" class="text-light text-decoration-none">Home <i class="fa fa-home"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <a href="{{ route('category.index') }}" class="text-light text-decoration-none">Category <i class="fa fa-list-squares"></i></a>
-            <div class="mx-3 text-light">/</div>
-            <div  class="text-secondary text-decoration-none">Create Category <i class="fa fa-plus"></i></div>
-        </div>
+        <x-breadCrumb :route="route('category.index')" addName="Category" arriveName="Create Category "/>
 
        {{-- CURRENT STATUS --}}
         <div class="current__status bg-primary my-2 d-flex p-4 flex-wrap overflow-auto">
